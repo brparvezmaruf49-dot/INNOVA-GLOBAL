@@ -1,0 +1,3579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INNOVA.GLOBAL — Admin Panel</title>
+
+<style>
+:root{
+  --bg:#050505;
+  --card:#0b0b0b;
+  --card2:#101010;
+  --gold:#d4af37;
+  --gold2:#f3d46b;
+  --blue:#1261ff;
+  --red:#e53935;
+  --green:#20c878;
+  --yellow:#ffc107;
+  --text:#f5f5f5;
+  --muted:#999;
+  --border:#2c2c2c;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+button,input,select,textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* LOGIN */
+
+.login-screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at top,#151515 0,#050505 55%);
+}
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:#090909;
+  border:1px solid var(--gold);
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 0 35px rgba(212,175,55,.12);
+  text-align:center;
+}
+
+.logo{
+  width:90px;
+  height:90px;
+  margin:0 auto 15px;
+  border:3px solid var(--gold);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-size:35px;
+}
+
+.login-box h1{
+  margin:8px 0 5px;
+  color:var(--gold2);
+}
+
+.login-box p{
+  color:var(--muted);
+}
+
+.field{
+  margin:14px 0;
+  text-align:left;
+}
+
+.field label{
+  display:block;
+  margin-bottom:7px;
+  color:#ddd;
+  font-size:14px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  background:#050505;
+  color:white;
+  border:1px solid var(--border);
+  border-radius:9px;
+  padding:12px;
+  outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:var(--gold);
+}
+
+.btn{
+  border:1px solid var(--gold);
+  background:var(--gold);
+  color:#050505;
+  border-radius:9px;
+  padding:11px 15px;
+  font-weight:bold;
+}
+
+.btn:hover{
+  filter:brightness(1.08);
+}
+
+.btn-dark{
+  background:#111;
+  color:white;
+}
+
+.btn-red{
+  background:#1a0808;
+  color:#ff7777;
+  border-color:#7d2222;
+}
+
+.btn-green{
+  background:#07180f;
+  color:#5cffae;
+  border-color:#187b4b;
+}
+
+.btn-blue{
+  background:#071126;
+  color:#69a1ff;
+  border-color:#194c9b;
+}
+
+.btn-small{
+  padding:7px 10px;
+  font-size:12px;
+}
+
+/* ADMIN */
+
+.admin-app{
+  min-height:100vh;
+}
+
+.topbar{
+  height:68px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#080808;
+  border-bottom:1px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--gold2);
+  font-weight:bold;
+}
+
+.brand-logo{
+  width:40px;
+  height:40px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+}
+
+.admin-label{
+  color:#aaa;
+  font-size:12px;
+}
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 68px);
+}
+
+.sidebar{
+  width:235px;
+  flex-shrink:0;
+  background:#080808;
+  border-right:1px solid var(--border);
+  padding:15px 10px;
+}
+
+.nav-btn{
+  width:100%;
+  display:block;
+  text-align:left;
+  padding:12px;
+  margin-bottom:6px;
+  background:transparent;
+  border:1px solid transparent;
+  border-radius:9px;
+  color:#ccc;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  color:var(--gold2);
+  border-color:#5f4d18;
+  background:#15120a;
+}
+
+.main{
+  flex:1;
+  padding:20px;
+  min-width:0;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-title{
+  margin:0 0 18px;
+  color:var(--gold2);
+}
+
+/* DASHBOARD */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:17px;
+}
+
+.stat span{
+  display:block;
+  color:#999;
+  font-size:13px;
+  margin-bottom:7px;
+}
+
+.stat strong{
+  font-size:25px;
+  color:var(--gold2);
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:16px;
+  margin-bottom:16px;
+}
+
+.card h3{
+  margin-top:0;
+  color:var(--gold2);
+}
+
+.table-wrap{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px;
+}
+
+th,td{
+  border-bottom:1px solid #222;
+  padding:11px 9px;
+  text-align:left;
+  font-size:13px;
+}
+
+th{
+  color:var(--gold2);
+  background:#101010;
+}
+
+td{
+  color:#ddd;
+}
+
+.badge{
+  display:inline-block;
+  padding:5px 8px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.pending{
+  color:#ffd45c;
+  background:#241d08;
+}
+
+.active{
+  color:#54e99b;
+  background:#071b10;
+}
+
+.inactive,
+.rejected{
+  color:#ff7777;
+  background:#1d0808;
+}
+
+.approved{
+  color:#69a1ff;
+  background:#071126;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.search{
+  margin-bottom:12px;
+}
+
+.search input{
+  width:100%;
+  padding:12px;
+  border-radius:9px;
+  background:#050505;
+  color:white;
+  border:1px solid var(--border);
+}
+
+.package-admin{
+  border:1px solid #292929;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:12px;
+  background:#090909;
+}
+
+.package-admin h3{
+  color:var(--gold2);
+  margin:0 0 10px;
+}
+
+.package-admin .package-info{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.info-box{
+  background:#111;
+  border:1px solid #242424;
+  border-radius:8px;
+  padding:9px;
+}
+
+.info-box span{
+  display:block;
+  font-size:11px;
+  color:#888;
+}
+
+.info-box strong{
+  color:#ddd;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.notice{
+  padding:11px;
+  border:1px solid #3a321a;
+  background:#141108;
+  color:#e9d99b;
+  border-radius:9px;
+  margin-bottom:12px;
+}
+
+/* MODAL */
+
+.modal-bg{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.82);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.modal-bg.show{
+  display:flex;
+}
+
+.modal{
+  width:100%;
+  max-width:600px;
+  max-height:90vh;
+  overflow:auto;
+  background:#0b0b0b;
+  border:1px solid var(--gold);
+  border-radius:15px;
+  padding:20px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:12px;
+  top:10px;
+  border:0;
+  background:none;
+  color:#aaa;
+  font-size:25px;
+}
+
+.close:hover{
+  color:white;
+}
+
+.preview{
+  margin-top:10px;
+  text-align:center;
+}
+
+.preview img{
+  max-width:100%;
+  max-height:400px;
+  border-radius:10px;
+  border:1px solid #333;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  z-index:200;
+  background:#111;
+  border:1px solid var(--gold);
+  color:white;
+  padding:12px 15px;
+  border-radius:9px;
+  display:none;
+  max-width:320px;
+}
+
+.toast.show{
+  display:block;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+  .sidebar{
+    width:65px;
+    padding:10px 6px;
+  }
+
+  .nav-btn{
+    font-size:0;
+    text-align:center;
+  }
+
+  .nav-btn::first-letter{
+    font-size:18px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .package-admin .package-info{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .main{
+    padding:12px;
+  }
+
+  .topbar{
+    padding:0 10px;
+  }
+
+  .brand-text{
+    display:none;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .grid2,
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .package-admin .package-info{
+    grid-template-columns:1fr 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     ADMIN LOGIN
+========================= -->
+
+<div id="loginScreen" class="login-screen">
+
+  <div class="login-box">
+
+    <div class="logo">🌐</div>
+
+    <h1>INNOVA.GLOBAL</h1>
+    <p>Administrator Panel</p>
+
+    <form onsubmit="adminLogin(event)">
+
+      <div class="field">
+        <label>Admin Username</label>
+        <input id="adminUsername" type="text" autocomplete="username" required>
+      </div>
+
+      <div class="field">
+        <label>Admin Password</label>
+        <input id="adminPassword" type="password" autocomplete="current-password" required>
+      </div>
+
+      <button class="btn" type="submit" style="width:100%">
+        ADMIN LOGIN
+      </button>
+
+    </form>
+
+    <div id="loginMessage" style="margin-top:12px;color:#ff7777"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     ADMIN APP
+========================= -->
+
+<div id="adminApp" class="admin-app hidden">
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-logo">🌐</div>
+
+      <div>
+        <div class="brand-text">INNOVA.GLOBAL</div>
+        <div class="admin-label">ADMIN PANEL</div>
+      </div>
+
+    </div>
+
+    <button class="btn btn-red btn-small" onclick="adminLogout()">
+      LOGOUT
+    </button>
+
+  </header>
+
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <button class="nav-btn active" onclick="showAdminPage('dashboard',this)">
+        📊 Dashboard
+      </button>
+
+      <button class="nav-btn" onclick="showAdminPage('members',this)">
+        👥 Members
+      </button>
+
+      <button class="nav-btn" onclick="showAdminPage('activations',this)">
+        🆔 ID Activations
+      </button>
+
+      <button class="nav-btn" onclick="showAdminPage('packages',this)">
+        📦 Packages
+      </button>
+
+      <button class="nav-btn" onclick="showAdminPage('payments',this)">
+        💳 Package Payments
+      </button>
+
+      <button class="nav-btn" onclick="showAdminPage('salary',this)">
+        💰 Salary System
+      </button>
+
+      <button class="nav-btn" onclick="showAdminPage('withdrawals',this)">
+        💸 Withdrawals
+      </button>
+
+      <button class="nav-btn" onclick="showAdminPage('notifications',this)">
+        🔔 Notifications
+      </button>
+
+      <button class="nav-btn" onclick="showAdminPage('settings',this)">
+        ⚙️ Settings
+      </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+
+      <!-- DASHBOARD -->
+
+      <section id="page-dashboard" class="page active">
+
+        <h2 class="page-title">Dashboard</h2>
+
+        <div class="stats">
+
+          <div class="stat">
+            <span>Total Members</span>
+            <strong id="statMembers">0</strong>
+          </div>
+
+          <div class="stat">
+            <span>Active Members</span>
+            <strong id="statActive">0</strong>
+          </div>
+
+          <div class="stat">
+            <span>Pending Activations</span>
+            <strong id="statPending">0</strong>
+          </div>
+
+          <div class="stat">
+            <span>Pending Payments</span>
+            <strong id="statPayments">0</strong>
+          </div>
+
+        </div>
+
+        <div class="stats">
+
+          <div class="stat">
+            <span>Total Balance</span>
+            <strong id="statBalance">৳0</strong>
+          </div>
+
+          <div class="stat">
+            <span>Total Earnings</span>
+            <strong id="statEarning">৳0</strong>
+          </div>
+
+          <div class="stat">
+            <span>Pending Withdrawals</span>
+            <strong id="statWithdrawals">0</strong>
+          </div>
+
+          <div class="stat">
+            <span>Salary Records</span>
+            <strong id="statSalary">0</strong>
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h3>System Overview</h3>
+
+          <p style="color:#aaa">
+            INNOVA.GLOBAL Admin Panel controls members, activations,
+            packages, payments, salary, withdrawals and notifications.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- MEMBERS -->
+
+      <section id="page-members" class="page">
+
+        <h2 class="page-title">Members</h2>
+
+        <div class="search">
+          <input
+            id="memberSearch"
+            type="search"
+            placeholder="Search by ID, name or mobile..."
+            oninput="renderAdminMembers()"
+          >
+        </div>
+
+        <div class="card">
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Status</th>
+                  <th>Package</th>
+                  <th>Balance</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="membersTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ACTIVATIONS -->
+
+      <section id="page-activations" class="page">
+
+        <h2 class="page-title">ID Activations</h2>
+
+        <div class="card">
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Method</th>
+                  <th>Sender</th>
+                  <th>TRX ID</th>
+                  <th>Screenshot</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="activationTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PACKAGES -->
+
+      <section id="page-packages" class="page">
+
+        <h2 class="page-title">Packages</h2>
+
+        <div id="adminPackages"></div>
+
+        <div class="card">
+
+          <h3>Add New Package</h3>
+
+          <form onsubmit="addPackage(event)">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label>Package Name</label>
+                <input id="newPackageName" required>
+              </div>
+
+              <div class="field">
+                <label>Price</label>
+                <input id="newPackagePrice" type="number" min="0" required>
+              </div>
+
+              <div class="field">
+                <label>Validity Days</label>
+                <input id="newPackageDays" type="number" min="1" value="15" required>
+              </div>
+
+              <div class="field">
+                <label>Tasks</label>
+                <input id="newPackageTasks" type="number" min="1" value="12" required>
+              </div>
+
+              <div class="field">
+                <label>Ad Timer Seconds</label>
+                <input id="newPackageTimer" type="number" min="1" value="20" required>
+              </div>
+
+              <div class="field">
+                <label>Daily Earning</label>
+                <input id="newPackageDaily" type="number" min="0" value="0" required>
+              </div>
+
+            </div>
+
+            <button class="btn" type="submit">
+              ADD PACKAGE
+            </button>
+
+          </form>
+
+        </div>
+
+      </section>
+
+
+      <!-- PACKAGE PAYMENTS -->
+
+      <section id="page-payments" class="page">
+
+        <h2 class="page-title">Package Payments</h2>
+
+        <div class="card">
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Member</th>
+                  <th>Package</th>
+                  <th>Method</th>
+                  <th>Sender</th>
+                  <th>TRX</th>
+                  <th>Screenshot</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="paymentTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SALARY -->
+
+      <section id="page-salary" class="page">
+
+        <h2 class="page-title">Salary System</h2>
+
+        <div class="card">
+
+          <div class="actions">
+
+            <button
+              id="salaryToggleBtn"
+              class="btn"
+              type="button"
+              onclick="toggleSalarySystem()">
+              SALARY SYSTEM
+            </button>
+
+          </div>
+
+          <p id="salarySystemStatus" style="color:#aaa"></p>
+
+        </div>
+
+
+        <div class="card">
+
+          <h3>Add Salary Rule</h3>
+
+          <form onsubmit="addSalaryRule(event)">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label>Rule Name</label>
+                <input id="salaryName" required>
+              </div>
+
+              <div class="field">
+                <label>Salary Amount</label>
+                <input id="salaryAmount" type="number" min="0" required>
+              </div>
+
+              <div class="field">
+                <label>Direct Partners Required</label>
+                <input id="salaryDirect" type="number" min="0" value="0" required>
+              </div>
+
+              <div class="field">
+                <label>Total Team Required</label>
+                <input id="salaryTeam" type="number" min="0" value="0" required>
+              </div>
+
+            </div>
+
+            <button class="btn" type="submit">
+              ADD SALARY RULE
+            </button>
+
+          </form>
+
+        </div>
+
+        <div id="salaryRules"></div>
+
+        <div class="card">
+
+          <h3>Salary Records</h3>
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Rule</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="salaryRecords"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- WITHDRAWALS -->
+
+      <section id="page-withdrawals" class="page">
+
+        <h2 class="page-title">Withdrawals</h2>
+
+        <div class="card">
+
+          <div class="table-wrap">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Member</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Account</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="withdrawalTable"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- NOTIFICATIONS -->
+
+      <section id="page-notifications" class="page">
+
+        <h2 class="page-title">Notifications</h2>
+
+        <div class="card">
+
+          <h3>Send Announcement</h3>
+
+          <form onsubmit="sendAnnouncement(event)">
+
+            <div class="field">
+
+              <label>Target</label>
+
+              <select id="announcementTarget" onchange="renderAnnouncementTargets()">
+
+                <option value="ALL">ALL MEMBERS</option>
+                <option value="SELECTED">SELECTED MEMBERS</option>
+                <option value="SPECIFIC">SPECIFIC MEMBER</option>
+
+              </select>
+
+            </div>
+
+            <div id="announcementMembers"></div>
+
+            <div class="field">
+
+              <label>Title</label>
+              <input id="announcementTitle" required>
+
+            </div>
+
+            <div class="field">
+
+              <label>Message</label>
+              <textarea id="announcementMessage" rows="5" required></textarea>
+
+            </div>
+
+            <button class="btn" type="submit">
+              SEND ANNOUNCEMENT
+            </button>
+
+          </form>
+
+        </div>
+
+        <div class="card">
+
+          <h3>Notification History</h3>
+
+          <div id="notificationHistory"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- SETTINGS -->
+
+      <section id="page-settings" class="page">
+
+        <h2 class="page-title">Settings</h2>
+
+        <div class="card">
+
+          <h3>Payment Settings</h3>
+
+          <form onsubmit="saveAdminSettings(event)">
+
+            <div class="field">
+
+              <label>Payment Number</label>
+
+              <input
+                id="adminPaymentNumber"
+                type="text"
+                value="01313213083"
+                required
+              >
+
+            </div>
+
+            <button class="btn" type="submit">
+              SAVE SETTINGS
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <div class="card">
+
+          <h3>Demo Data</h3>
+
+          <p style="color:#aaa">
+            This will permanently clear the prototype data from
+            this browser.
+          </p>
+
+          <button
+            class="btn btn-red"
+            type="button"
+            onclick="resetDemo()">
+            RESET DEMO DATA
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</div>
+
+
+<!-- IMAGE VIEWER -->
+
+<div id="imageViewerModal" class="modal-bg">
+
+  <div class="modal">
+
+    <button
+      class="close"
+      type="button"
+      onclick="closeModal('imageViewerModal')">
+      ×
+    </button>
+
+    <h2 style="color:var(--gold2)">
+      Payment Screenshot
+    </h2>
+
+    <div id="imageViewer"></div>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+
+/* =========================================================
+   STORAGE
+========================================================= */
+
+const STORAGE_KEY = "innova_global_demo_v6";
+
+const DEFAULT_STATE = {
+  settings:{
+    paymentNumber:"01313213083"
+  },
+
+  members:[],
+
+  packages:[
+    {
+      id:"PKG200",
+      name:"Starter Package",
+      price:200,
+      days:15,
+      tasks:12,
+      timer:20,
+      daily:50,
+      active:true
+    },
+    {
+      id:"PKG300",
+      name:"Growth Package",
+      price:300,
+      days:15,
+      tasks:12,
+      timer:20,
+      daily:100,
+      active:true
+    },
+    {
+      id:"PKG400",
+      name:"Professional Package",
+      price:400,
+      days:15,
+      tasks:12,
+      timer:20,
+      daily:150,
+      active:true
+    }
+  ],
+
+  packagePayments:[],
+  withdrawals:[],
+  notifications:[],
+
+  salary:{
+    enabled:false,
+    levels:[],
+    records:[]
+  }
+};
+
+
+let state = loadState();
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+function cloneDefault(){
+  return JSON.parse(JSON.stringify(DEFAULT_STATE));
+}
+
+function loadState(){
+
+  try{
+
+    const raw = localStorage.getItem(STORAGE_KEY);
+
+    if(!raw){
+      return cloneDefault();
+    }
+
+    const data = JSON.parse(raw);
+
+    const base = cloneDefault();
+
+    return Object.assign(base,data);
+
+  }catch(error){
+
+    console.error(error);
+
+    return cloneDefault();
+
+  }
+
+}
+
+
+function saveState(){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(state)
+  );
+
+}
+
+
+/* =========================================================
+   STATE SHAPE
+========================================================= */
+
+function ensureStateShape(){
+
+  if(!state.settings){
+    state.settings={
+      paymentNumber:"01313213083"
+    };
+  }
+
+  if(!state.settings.paymentNumber){
+    state.settings.paymentNumber="01313213083";
+  }
+
+  if(!Array.isArray(state.members)){
+    state.members=[];
+  }
+
+  if(!Array.isArray(state.packages)){
+    state.packages=[];
+  }
+
+  if(!Array.isArray(state.packagePayments)){
+    state.packagePayments=[];
+  }
+
+  if(!Array.isArray(state.withdrawals)){
+    state.withdrawals=[];
+  }
+
+  if(!Array.isArray(state.notifications)){
+    state.notifications=[];
+  }
+
+  if(!state.salary){
+    state.salary={
+      enabled:false,
+      levels:[],
+      records:[]
+    };
+  }
+
+  if(!Array.isArray(state.salary.levels)){
+    state.salary.levels=[];
+  }
+
+  if(!Array.isArray(state.salary.records)){
+    state.salary.records=[];
+  }
+
+  state.members.forEach(m=>{
+
+    if(m.balance==null)m.balance=0;
+
+    if(m.totalEarning==null)m.totalEarning=0;
+
+    if(m.salaryIncome==null)m.salaryIncome=0;
+
+    if(!m.status)m.status="PENDING";
+
+  });
+
+}
+
+ensureStateShape();
+saveState();
+
+
+/* =========================================================
+   BASIC HELPERS
+========================================================= */
+
+function esc(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+function money(value){
+
+  return "৳"+Number(value||0).toLocaleString();
+
+}
+
+function formatDate(value){
+
+  if(!value)return "—";
+
+  const d = new Date(value);
+
+  if(Number.isNaN(d.getTime())){
+    return "—";
+  }
+
+  return d.toLocaleString();
+
+}
+
+function getMember(id){
+
+  return state.members.find(
+    m=>m.id===id
+  );
+
+}
+
+function getPackage(id){
+
+  return state.packages.find(
+    p=>p.id===id
+  );
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer=null;
+
+function toast(message){
+
+  const box=document.getElementById("toast");
+
+  box.textContent=message;
+
+  box.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer=setTimeout(()=>{
+    box.classList.remove("show");
+  },3000);
+
+}
+
+
+/* =========================================================
+   ADMIN LOGIN
+========================================================= */
+
+function adminLogin(event){
+
+  event.preventDefault();
+
+  const username=
+    document.getElementById("adminUsername").value.trim();
+
+  const password=
+    document.getElementById("adminPassword").value;
+
+  /*
+    PROTOTYPE ONLY
+
+    Real production security must NOT keep
+    admin credentials in frontend JavaScript.
+  */
+
+  if(
+    username==="admin" &&
+    password==="123456"
+  ){
+
+    sessionStorage.setItem(
+      "innova_admin_logged",
+      "1"
+    );
+
+    document
+      .getElementById("loginScreen")
+      .classList.add("hidden");
+
+    document
+      .getElementById("adminApp")
+      .classList.remove("hidden");
+
+    renderAdmin();
+
+  }else{
+
+    document.getElementById("loginMessage").textContent=
+      "Invalid admin username or password.";
+
+  }
+
+}
+
+
+function adminLogout(){
+
+  sessionStorage.removeItem(
+    "innova_admin_logged"
+  );
+
+  location.reload();
+
+}
+
+
+function checkAdminSession(){
+
+  const logged=
+    sessionStorage.getItem(
+      "innova_admin_logged"
+    );
+
+  if(logged==="1"){
+
+    document
+      .getElementById("loginScreen")
+      .classList.add("hidden");
+
+    document
+      .getElementById("adminApp")
+      .classList.remove("hidden");
+
+    renderAdmin();
+
+  }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showAdminPage(page,button){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
+
+  const target=
+    document.getElementById("page-"+page);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(b=>b.classList.remove("active"));
+
+  if(button){
+    button.classList.add("active");
+  }
+
+  renderAdmin();
+
+}
+
+
+/* =========================================================
+   MAIN ADMIN RENDER
+========================================================= */
+
+function renderAdmin(){
+
+  ensureStateShape();
+
+  saveState();
+
+  renderDashboard();
+
+  renderAdminMembers();
+
+  renderActivations();
+
+  renderAdminPackages();
+
+  renderPackagePayments();
+
+  renderSalary();
+
+  renderWithdrawals();
+
+  renderAnnouncementTargets();
+
+  renderNotifications();
+
+  renderSettings();
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function renderDashboard(){
+
+  const members=state.members;
+
+  const active=
+    members.filter(m=>m.status==="ACTIVE").length;
+
+  const pending=
+    members.filter(m=>m.status==="PENDING").length;
+
+  const pendingPayments=
+    state.packagePayments
+      .filter(p=>p.status==="PENDING").length;
+
+  const balance=
+    members.reduce(
+      (sum,m)=>sum+Number(m.balance||0),
+      0
+    );
+
+  const earning=
+    members.reduce(
+      (sum,m)=>sum+Number(m.totalEarning||0),
+      0
+    );
+
+  const pendingWithdrawals=
+    state.withdrawals
+      .filter(w=>w.status==="PENDING").length;
+
+  document.getElementById("statMembers").textContent=
+    members.length;
+
+  document.getElementById("statActive").textContent=
+    active;
+
+  document.getElementById("statPending").textContent=
+    pending;
+
+  document.getElementById("statPayments").textContent=
+    pendingPayments;
+
+  document.getElementById("statBalance").textContent=
+    money(balance);
+
+  document.getElementById("statEarning").textContent=
+    money(earning);
+
+  document.getElementById("statWithdrawals").textContent=
+    pendingWithdrawals;
+
+  document.getElementById("statSalary").textContent=
+    state.salary.records.length;
+
+}
+
+
+/* =========================================================
+   MEMBERS
+========================================================= */
+
+function renderAdminMembers(){
+
+  const body=
+    document.getElementById("membersTable");
+
+  const search=
+    (
+      document.getElementById("memberSearch")?.value ||
+      ""
+    ).toLowerCase().trim();
+
+  const list=
+    state.members.filter(m=>{
+
+      if(!search)return true;
+
+      return [
+        m.id,
+        m.name,
+        m.mobile,
+        m.uid
+      ]
+      .join(" ")
+      .toLowerCase()
+      .includes(search);
+
+    });
+
+  if(!list.length){
+
+    body.innerHTML=`
+      <tr>
+        <td colspan="7" style="text-align:center;color:#777">
+          No members found.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  body.innerHTML=list.map(m=>{
+
+    const pkg=
+      getPackage(m.packageId);
+
+    return `
+      <tr>
+
+        <td>${esc(m.id)}</td>
+
+        <td>
+          ${esc(m.name)}
+          <br>
+          <small style="color:#777">
+            ${esc(m.uid||"")}
+          </small>
+        </td>
+
+        <td>${esc(m.mobile)}</td>
+
+        <td>
+          <span class="badge ${statusClass(m.status)}">
+            ${esc(m.status)}
+          </span>
+        </td>
+
+        <td>
+          ${pkg ? esc(pkg.name) : "—"}
+        </td>
+
+        <td>
+          ${money(m.balance)}
+        </td>
+
+        <td>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-small btn-blue"
+              type="button"
+              onclick="viewMember('${jsQuote(m.id)}')">
+              VIEW
+            </button>
+
+            <button
+              class="btn btn-small ${m.status==="ACTIVE" ? "btn-red" : "btn-green"}"
+              type="button"
+              onclick="toggleMemberStatus('${jsQuote(m.id)}')">
+
+              ${m.status==="ACTIVE" ? "DEACTIVATE" : "ACTIVATE"}
+
+            </button>
+
+          </div>
+
+        </td>
+
+      </tr>
+    `;
+
+  }).join("");
+
+}
+
+
+function statusClass(status){
+
+  if(status==="ACTIVE")return "active";
+
+  if(status==="APPROVED")return "approved";
+
+  if(status==="REJECTED")return "rejected";
+
+  if(status==="INACTIVE")return "inactive";
+
+  return "pending";
+
+}
+
+
+function jsQuote(value){
+
+  return String(value)
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'")
+    .replace(/\n/g,"\\n")
+    .replace(/\r/g,"\\r");
+
+}
+
+
+function viewMember(id){
+
+  const m=getMember(id);
+
+  if(!m){
+    toast("Member not found.");
+    return;
+  }
+
+  const pkg=getPackage(m.packageId);
+
+  alert(
+`Member Details
+
+ID: ${m.id}
+UID: ${m.uid||"—"}
+Name: ${m.name}
+Mobile: ${m.mobile}
+Status: ${m.status}
+Upline: ${m.uplineId||"—"}
+Package: ${pkg?.name||"—"}
+Balance: ${money(m.balance)}
+Total Earning: ${money(m.totalEarning)}
+Joining: ${formatDate(m.createdAt)}`
+  );
+
+}
+
+
+function toggleMemberStatus(id){
+
+  const m=getMember(id);
+
+  if(!m)return;
+
+  if(m.status==="ACTIVE"){
+
+    m.status="INACTIVE";
+
+  }else{
+
+    m.status="ACTIVE";
+
+    if(!m.activatedAt){
+      m.activatedAt=new Date().toISOString();
+    }
+
+  }
+
+  saveState();
+
+  toast(
+    m.status==="ACTIVE"
+      ? "Member activated."
+      : "Member deactivated."
+  );
+
+  renderAdmin();
+
+}
+
+
+/* =========================================================
+   ID ACTIVATIONS
+========================================================= */
+
+function renderActivations(){
+
+  const body=
+    document.getElementById("activationTable");
+
+  const list=
+    state.members.filter(
+      m=>m.activationPayment
+    );
+
+  if(!list.length){
+
+    body.innerHTML=`
+      <tr>
+        <td colspan="9" style="text-align:center;color:#777">
+          No activation payment records.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  body.innerHTML=list.map(m=>{
+
+    const p=m.activationPayment;
+
+    return `
+      <tr>
+
+        <td>${esc(m.id)}</td>
+
+        <td>${esc(m.name)}</td>
+
+        <td>${esc(m.mobile)}</td>
+
+        <td>${esc(p.method||"—")}</td>
+
+        <td>${esc(p.sender||"—")}</td>
+
+        <td>${esc(p.trx||"—")}</td>
+
+        <td>
+          ${
+            p.screenshot
+            ?
+            `<button
+              class="btn btn-small btn-blue"
+              type="button"
+              onclick="viewImage('${jsQuote(p.screenshot)}')">
+              VIEW
+            </button>`
+            :
+            "—"
+          }
+        </td>
+
+        <td>
+          <span class="badge ${statusClass(p.status)}">
+            ${esc(p.status)}
+          </span>
+        </td>
+
+        <td>
+
+          ${
+            p.status==="PENDING"
+            ?
+            `
+            <div class="actions">
+
+              <button
+                class="btn btn-small btn-green"
+                onclick="approveActivation('${jsQuote(m.id)}')">
+                APPROVE
+              </button>
+
+              <button
+                class="btn btn-small btn-red"
+                onclick="rejectActivation('${jsQuote(m.id)}')">
+                REJECT
+              </button>
+
+            </div>
+            `
+            :
+            "—"
+          }
+
+        </td>
+
+      </tr>
+    `;
+
+  }).join("");
+
+}
+
+
+function approveActivation(id){
+
+  const m=getMember(id);
+
+  if(!m)return;
+
+  if(!m.activationPayment){
+    toast("Activation payment not found.");
+    return;
+  }
+
+  if(m.activationPayment.status==="APPROVED"){
+    toast("Already approved.");
+    return;
+  }
+
+  m.activationPayment.status="APPROVED";
+
+  m.status="ACTIVE";
+
+  m.activatedAt=
+    new Date().toISOString();
+
+  addNotification(
+    m.id,
+    "Activation Approved",
+    "Your INNOVA ID has been activated."
+  );
+
+  saveState();
+
+  toast("Activation approved.");
+
+  renderAdmin();
+
+}
+
+
+function rejectActivation(id){
+
+  const m=getMember(id);
+
+  if(!m)return;
+
+  if(!m.activationPayment){
+    toast("Activation payment not found.");
+    return;
+  }
+
+  m.activationPayment.status="REJECTED";
+
+  m.status="PENDING";
+
+  addNotification(
+    m.id,
+    "Activation Rejected",
+    "Your activation payment was rejected. Please check your payment details."
+  );
+
+  saveState();
+
+  toast("Activation rejected.");
+
+  renderAdmin();
+
+}
+
+
+/* =========================================================
+   PACKAGES
+========================================================= */
+
+function renderAdminPackages(){
+
+  const box=
+    document.getElementById("adminPackages");
+
+  if(!state.packages.length){
+
+    box.innerHTML=`
+      <div class="card">
+        No packages available.
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML=
+    state.packages.map(pkg=>`
+
+      <div class="package-admin">
+
+        <h3>
+          ${esc(pkg.name)}
+          ${
+            pkg.active
+            ?
+            `<span class="badge active">ACTIVE</span>`
+            :
+            `<span class="badge inactive">INACTIVE</span>`
+          }
+        </h3>
+
+        <div class="package-info">
+
+          <div class="info-box">
+            <span>ID</span>
+            <strong>${esc(pkg.id)}</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Price</span>
+            <strong>${money(pkg.price)}</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Validity</span>
+            <strong>${pkg.days} Days</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Tasks</span>
+            <strong>${pkg.tasks}</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Ad Timer</span>
+            <strong>${pkg.timer}s</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Daily Earning</span>
+            <strong>${money(pkg.daily)}</strong>
+          </div>
+
+        </div>
+
+        <div class="actions" style="margin-top:12px">
+
+          <button
+            class="btn btn-small ${pkg.active ? "btn-red" : "btn-green"}"
+            onclick="togglePackage('${jsQuote(pkg.id)}')">
+
+            ${pkg.active ? "DISABLE" : "ENABLE"}
+
+          </button>
+
+          <button
+            class="btn btn-small btn-blue"
+            onclick="editPackage('${jsQuote(pkg.id)}')">
+            EDIT
+          </button>
+
+          <button
+            class="btn btn-small btn-red"
+            onclick="deletePackage('${jsQuote(pkg.id)}')">
+            DELETE
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+function addPackage(event){
+
+  event.preventDefault();
+
+  const name=
+    document.getElementById("newPackageName").value.trim();
+
+  const price=
+    Number(document.getElementById("newPackagePrice").value);
+
+  const days=
+    Number(document.getElementById("newPackageDays").value);
+
+  const tasks=
+    Number(document.getElementById("newPackageTasks").value);
+
+  const timer=
+    Number(document.getElementById("newPackageTimer").value);
+
+  const daily=
+    Number(document.getElementById("newPackageDaily").value);
+
+  if(!name || price<0 || days<1 || tasks<1 || timer<1){
+    toast("Please enter valid package details.");
+    return;
+  }
+
+  const id=
+    "PKG_"+Date.now();
+
+  state.packages.push({
+    id,
+    name,
+    price,
+    days,
+    tasks,
+    timer,
+    daily,
+    active:true
+  });
+
+  saveState();
+
+  event.target.reset();
+
+  toast("Package added.");
+
+  renderAdmin();
+
+}
+
+
+function editPackage(id){
+
+  const pkg=getPackage(id);
+
+  if(!pkg)return;
+
+  const name=
+    prompt("Package Name:",pkg.name);
+
+  if(name===null)return;
+
+  const price=
+    Number(
+      prompt("Price:",pkg.price)
+    );
+
+  const days=
+    Number(
+      prompt("Validity Days:",pkg.days)
+    );
+
+  const tasks=
+    Number(
+      prompt("Tasks:",pkg.tasks)
+    );
+
+  const timer=
+    Number(
+      prompt("Ad Timer Seconds:",pkg.timer)
+    );
+
+  const daily=
+    Number(
+      prompt("Daily Earning:",pkg.daily)
+    );
+
+  if(
+    !name.trim() ||
+    !Number.isFinite(price) ||
+    !Number.isFinite(days) ||
+    !Number.isFinite(tasks) ||
+    !Number.isFinite(timer) ||
+    !Number.isFinite(daily)
+  ){
+
+    toast("Invalid package information.");
+    return;
+
+  }
+
+  pkg.name=name.trim();
+  pkg.price=price;
+  pkg.days=days;
+  pkg.tasks=tasks;
+  pkg.timer=timer;
+  pkg.daily=daily;
+
+  saveState();
+
+  toast("Package updated.");
+
+  renderAdmin();
+
+}
+
+
+function togglePackage(id){
+
+  const pkg=getPackage(id);
+
+  if(!pkg)return;
+
+  pkg.active=!pkg.active;
+
+  saveState();
+
+  toast(
+    pkg.active
+      ? "Package enabled."
+      : "Package disabled."
+  );
+
+  renderAdmin();
+
+}
+
+
+function deletePackage(id){
+
+  const pkg=getPackage(id);
+
+  if(!pkg)return;
+
+  if(
+    !confirm(
+      "Delete this package?"
+    )
+  ){
+    return;
+  }
+
+  state.packages=
+    state.packages.filter(
+      p=>p.id!==id
+    );
+
+  saveState();
+
+  toast("Package deleted.");
+
+  renderAdmin();
+
+}
+
+
+/* =========================================================
+   PACKAGE PAYMENTS
+========================================================= */
+
+function renderPackagePayments(){
+
+  const body=
+    document.getElementById("paymentTable");
+
+  if(!state.packagePayments.length){
+
+    body.innerHTML=`
+      <tr>
+        <td colspan="9" style="text-align:center;color:#777">
+          No package payments.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  body.innerHTML=
+    state.packagePayments.map(p=>{
+
+      const m=getMember(p.memberId);
+      const pkg=getPackage(p.packageId);
+
+      return `
+        <tr>
+
+          <td>${esc(p.id)}</td>
+
+          <td>
+            ${esc(m?.name||"Unknown")}
+            <br>
+            <small style="color:#777">
+              ${esc(p.memberId)}
+            </small>
+          </td>
+
+          <td>
+            ${esc(pkg?.name||p.packageId)}
+            <br>
+            ${pkg ? money(pkg.price) : ""}
+          </td>
+
+          <td>${esc(p.method)}</td>
+
+          <td>${esc(p.sender)}</td>
+
+          <td>${esc(p.trx)}</td>
+
+          <td>
+
+            ${
+              p.screenshot
+              ?
+              `<button
+                class="btn btn-small btn-blue"
+                onclick="viewImage('${jsQuote(p.screenshot)}')">
+                VIEW
+              </button>`
+              :
+              "—"
+            }
+
+          </td>
+
+          <td>
+            <span class="badge ${statusClass(p.status)}">
+              ${esc(p.status)}
+            </span>
+          </td>
+
+          <td>
+
+            ${
+              p.status==="PENDING"
+              ?
+              `
+              <div class="actions">
+
+                <button
+                  class="btn btn-small btn-green"
+                  onclick="approvePackagePayment(${p.id})">
+                  APPROVE
+                </button>
+
+                <button
+                  class="btn btn-small btn-red"
+                  onclick="rejectPackagePayment(${p.id})">
+                  REJECT
+                </button>
+
+              </div>
+              `
+              :
+              "—"
+            }
+
+          </td>
+
+        </tr>
+      `;
+
+    }).join("");
+
+}
+
+
+function approvePackagePayment(id){
+
+  const payment=
+    state.packagePayments.find(
+      p=>Number(p.id)===Number(id)
+    );
+
+  if(!payment)return;
+
+  if(payment.status!=="PENDING"){
+    toast("Payment already processed.");
+    return;
+  }
+
+  const member=
+    getMember(payment.memberId);
+
+  const pkg=
+    getPackage(payment.packageId);
+
+  if(!member || !pkg){
+    toast("Member or package not found.");
+    return;
+  }
+
+  payment.status="APPROVED";
+
+  payment.approvedAt=
+    new Date().toISOString();
+
+  member.packageId=pkg.id;
+
+  member.packageActivatedAt=
+    new Date().toISOString();
+
+  member.packageExpiresAt=
+    new Date(
+      Date.now()+pkg.days*24*60*60*1000
+    ).toISOString();
+
+  if(!member.adHistory){
+    member.adHistory={};
+  }
+
+  member.adHistory[pkg.id]={};
+
+  addNotification(
+    member.id,
+    "Package Activated",
+    `${pkg.name} has been activated for your account.`
+  );
+
+  saveState();
+
+  toast("Package payment approved.");
+
+  renderAdmin();
+
+}
+
+
+function rejectPackagePayment(id){
+
+  const payment=
+    state.packagePayments.find(
+      p=>Number(p.id)===Number(id)
+    );
+
+  if(!payment)return;
+
+  if(payment.status!=="PENDING"){
+    toast("Payment already processed.");
+    return;
+  }
+
+  payment.status="REJECTED";
+
+  payment.rejectedAt=
+    new Date().toISOString();
+
+  const member=
+    getMember(payment.memberId);
+
+  if(member){
+
+    addNotification(
+      member.id,
+      "Package Payment Rejected",
+      "Your package payment was rejected. Please check your payment information."
+    );
+
+  }
+
+  saveState();
+
+  toast("Package payment rejected.");
+
+  renderAdmin();
+
+}
+
+
+/* =========================================================
+   SALARY SYSTEM
+========================================================= */
+
+function renderSalary(){
+
+  const status=
+    document.getElementById(
+      "salarySystemStatus"
+    );
+
+  const toggle=
+    document.getElementById(
+      "salaryToggleBtn"
+    );
+
+  status.textContent=
+    state.salary.enabled
+      ? "Salary System is ON."
+      : "Salary System is OFF.";
+
+  toggle.textContent=
+    state.salary.enabled
+      ? "TURN SALARY OFF"
+      : "TURN SALARY ON";
+
+  renderSalaryRules();
+
+  renderSalaryRecords();
+
+}
+
+
+function toggleSalarySystem(){
+
+  state.salary.enabled=
+    !state.salary.enabled;
+
+  saveState();
+
+  toast(
+    state.salary.enabled
+      ? "Salary System enabled."
+      : "Salary System disabled."
+  );
+
+  renderSalary();
+
+}
+
+
+function addSalaryRule(event){
+
+  event.preventDefault();
+
+  const name=
+    document.getElementById("salaryName").value.trim();
+
+  const amount=
+    Number(
+      document.getElementById("salaryAmount").value
+    );
+
+  const directRequired=
+    Number(
+      document.getElementById("salaryDirect").value
+    );
+
+  const teamRequired=
+    Number(
+      document.getElementById("salaryTeam").value
+    );
+
+  if(
+    !name ||
+    amount<0 ||
+    directRequired<0 ||
+    teamRequired<0
+  ){
+
+    toast("Enter valid salary rule.");
+    return;
+
+  }
+
+  state.salary.levels.push({
+
+    id:"SAL_"+Date.now(),
+
+    name,
+
+    amount,
+
+    directRequired,
+
+    teamRequired,
+
+    active:true
+
+  });
+
+  saveState();
+
+  event.target.reset();
+
+  toast("Salary rule added.");
+
+  renderSalary();
+
+}
+
+
+function renderSalaryRules(){
+
+  const box=
+    document.getElementById("salaryRules");
+
+  if(!state.salary.levels.length){
+
+    box.innerHTML=`
+      <div class="card">
+        No salary rules added.
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML=
+    state.salary.levels.map(rule=>`
+
+      <div class="card">
+
+        <h3>
+          ${esc(rule.name)}
+        </h3>
+
+        <div class="grid2">
+
+          <div>
+            <span style="color:#888">
+              Amount
+            </span>
+
+            <strong>
+              ${money(rule.amount)}
+            </strong>
+          </div>
+
+          <div>
+            <span style="color:#888">
+              Status
+            </span>
+
+            <strong>
+              ${rule.active ? "ACTIVE" : "INACTIVE"}
+            </strong>
+          </div>
+
+          <div>
+            <span style="color:#888">
+              Direct Required
+            </span>
+
+            <strong>
+              ${rule.directRequired}
+            </strong>
+          </div>
+
+          <div>
+            <span style="color:#888">
+              Team Required
+            </span>
+
+            <strong>
+              ${rule.teamRequired}
+            </strong>
+          </div>
+
+        </div>
+
+        <div class="actions" style="margin-top:12px">
+
+          <button
+            class="btn btn-small ${rule.active ? "btn-red" : "btn-green"}"
+            onclick="toggleSalaryRule('${jsQuote(rule.id)}')">
+
+            ${rule.active ? "DISABLE" : "ENABLE"}
+
+          </button>
+
+          <button
+            class="btn btn-small btn-red"
+            onclick="deleteSalaryRule('${jsQuote(rule.id)}')">
+            DELETE
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+function toggleSalaryRule(id){
+
+  const rule=
+    state.salary.levels.find(
+      r=>r.id===id
+    );
+
+  if(!rule)return;
+
+  rule.active=!rule.active;
+
+  saveState();
+
+  renderSalary();
+
+}
+
+
+function deleteSalaryRule(id){
+
+  if(
+    !confirm("Delete this salary rule?")
+  ){
+    return;
+  }
+
+  state.salary.levels=
+    state.salary.levels.filter(
+      r=>r.id!==id
+    );
+
+  saveState();
+
+  toast("Salary rule deleted.");
+
+  renderSalary();
+
+}
+
+
+function renderSalaryRecords(){
+
+  const body=
+    document.getElementById(
+      "salaryRecords"
+    );
+
+  if(!state.salary.records.length){
+
+    body.innerHTML=`
+      <tr>
+        <td colspan="6" style="text-align:center;color:#777">
+          No salary records.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  body.innerHTML=
+    state.salary.records.map(r=>{
+
+      const m=getMember(r.memberId);
+
+      const rule=
+        state.salary.levels.find(
+          x=>x.id===r.levelId
+        );
+
+      return `
+        <tr>
+
+          <td>
+            ${esc(m?.name||"Unknown")}
+            <br>
+            <small>${esc(r.memberId)}</small>
+          </td>
+
+          <td>
+            ${esc(rule?.name||r.levelId)}
+          </td>
+
+          <td>${money(r.amount)}</td>
+
+          <td>
+            <span class="badge ${statusClass(r.status)}">
+              ${esc(r.status)}
+            </span>
+          </td>
+
+          <td>${formatDate(r.createdAt)}</td>
+
+          <td>
+
+            ${
+              r.status==="APPROVED"
+              ?
+              `
+              <button
+                class="btn btn-small btn-green"
+                onclick="paySalary(${r.id})">
+                MARK PAID
+              </button>
+              `
+              :
+              "—"
+            }
+
+          </td>
+
+        </tr>
+      `;
+
+    }).join("");
+
+}
+
+
+function paySalary(id){
+
+  const record=
+    state.salary.records.find(
+      r=>Number(r.id)===Number(id)
+    );
+
+  if(!record)return;
+
+  if(record.status!=="APPROVED"){
+    toast("Salary is not approved.");
+    return;
+  }
+
+  const member=
+    getMember(record.memberId);
+
+  if(!member){
+    toast("Member not found.");
+    return;
+  }
+
+  record.status="PAID";
+
+  record.paidAt=
+    new Date().toISOString();
+
+  member.balance=
+    Number(member.balance||0)+
+    Number(record.amount||0);
+
+  member.salaryIncome=
+    Number(member.salaryIncome||0)+
+    Number(record.amount||0);
+
+  member.totalEarning=
+    Number(member.totalEarning||0)+
+    Number(record.amount||0);
+
+  addNotification(
+    member.id,
+    "Salary Paid",
+    `${money(record.amount)} salary has been added to your balance.`
+  );
+
+  saveState();
+
+  toast("Salary marked as paid.");
+
+  renderAdmin();
+
+}
+
+
+/* =========================================================
+   WITHDRAWALS
+========================================================= */
+
+function renderWithdrawals(){
+
+  const body=
+    document.getElementById(
+      "withdrawalTable"
+    );
+
+  if(!state.withdrawals.length){
+
+    body.innerHTML=`
+      <tr>
+        <td colspan="7" style="text-align:center;color:#777">
+          No withdrawal requests.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  body.innerHTML=
+    state.withdrawals.map(w=>{
+
+      const m=
+        getMember(w.memberId);
+
+      return `
+        <tr>
+
+          <td>
+            ${esc(m?.name||"Unknown")}
+            <br>
+            <small>${esc(w.memberId)}</small>
+          </td>
+
+          <td>${money(w.amount)}</td>
+
+          <td>${esc(w.method)}</td>
+
+          <td>${esc(w.account)}</td>
+
+          <td>
+            <span class="badge ${statusClass(w.status)}">
+              ${esc(w.status)}
+            </span>
+          </td>
+
+          <td>${formatDate(w.createdAt)}</td>
+
+          <td>
+
+            ${
+              w.status==="PENDING"
+              ?
+              `
+              <div class="actions">
+
+                <button
+                  class="btn btn-small btn-green"
+                  onclick="approveWithdrawal(${w.id})">
+                  APPROVE
+                </button>
+
+                <button
+                  class="btn btn-small btn-red"
+                  onclick="rejectWithdrawal(${w.id})">
+                  REJECT
+                </button>
+
+              </div>
+              `
+              :
+              "—"
+            }
+
+          </td>
+
+        </tr>
+      `;
+
+    }).join("");
+
+}
+
+
+function approveWithdrawal(id){
+
+  const w=
+    state.withdrawals.find(
+      x=>Number(x.id)===Number(id)
+    );
+
+  if(!w)return;
+
+  if(w.status!=="PENDING"){
+    toast("Withdrawal already processed.");
+    return;
+  }
+
+  const m=
+    getMember(w.memberId);
+
+  if(!m){
+    toast("Member not found.");
+    return;
+  }
+
+  const amount=
+    Number(w.amount||0);
+
+  if(amount<=0){
+    toast("Invalid withdrawal amount.");
+    return;
+  }
+
+  if(Number(m.balance||0)<amount){
+
+    w.status="REJECTED";
+
+    addNotification(
+      m.id,
+      "Withdrawal Rejected",
+      "Withdrawal rejected because the available balance is insufficient."
+    );
+
+    saveState();
+
+    renderAdmin();
+
+    return;
+  }
+
+  m.balance=
+    Number(m.balance||0)-amount;
+
+  w.status="APPROVED";
+
+  w.processedAt=
+    new Date().toISOString();
+
+  addNotification(
+    m.id,
+    "Withdrawal Approved",
+    `${money(amount)} withdrawal has been approved.`
+  );
+
+  saveState();
+
+  toast("Withdrawal approved.");
+
+  renderAdmin();
+
+}
+
+
+function rejectWithdrawal(id){
+
+  const w=
+    state.withdrawals.find(
+      x=>Number(x.id)===Number(id)
+    );
+
+  if(!w)return;
+
+  if(w.status!=="PENDING"){
+    toast("Withdrawal already processed.");
+    return;
+  }
+
+  w.status="REJECTED";
+
+  w.processedAt=
+    new Date().toISOString();
+
+  const m=
+    getMember(w.memberId);
+
+  if(m){
+
+    addNotification(
+      m.id,
+      "Withdrawal Rejected",
+      "Your withdrawal request was rejected."
+    );
+
+  }
+
+  saveState();
+
+  toast("Withdrawal rejected.");
+
+  renderAdmin();
+
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
+
+function addNotification(
+  memberId,
+  title,
+  message
+){
+
+  state.notifications.push({
+
+    id:Date.now()+Math.random(),
+
+    memberId,
+
+    title,
+
+    message,
+
+    read:false,
+
+    createdAt:
+      new Date().toISOString()
+
+  });
+
+}
+
+
+function sendAnnouncement(event){
+
+  event.preventDefault();
+
+  const target=
+    document.getElementById(
+      "announcementTarget"
+    ).value;
+
+  const title=
+    document.getElementById(
+      "announcementTitle"
+    ).value.trim();
+
+  const message=
+    document.getElementById(
+      "announcementMessage"
+    ).value.trim();
+
+  if(!title || !message){
+    toast("Title and message are required.");
+    return;
+  }
+
+  let memberIds=[];
+
+  if(target==="ALL"){
+
+    memberIds=
+      state.members.map(
+        m=>m.id
+      );
+
+  }
+
+  if(
+    target==="SPECIFIC" ||
+    target==="SELECTED"
+  ){
+
+    memberIds=
+      Array.from(
+        document.querySelectorAll(
+          "#announcementMembers input:checked"
+        )
+      ).map(
+        input=>input.value
+      );
+
+  }
+
+  if(!memberIds.length){
+
+    toast("Select at least one member.");
+
+    return;
+
+  }
+
+  memberIds.forEach(id=>{
+
+    addNotification(
+      id,
+      title,
+      message
+    );
+
+  });
+
+  saveState();
+
+  event.target.reset();
+
+  renderAnnouncementTargets();
+
+  renderNotifications();
+
+  toast(
+    `Announcement sent to ${memberIds.length} member(s).`
+  );
+
+}
+
+
+function renderAnnouncementTargets(){
+
+  const box=
+    document.getElementById(
+      "announcementMembers"
+    );
+
+  if(!box)return;
+
+  const target=
+    document.getElementById(
+      "announcementTarget"
+    ).value;
+
+  if(target==="ALL"){
+
+    box.innerHTML="";
+    return;
+
+  }
+
+  if(!state.members.length){
+
+    box.innerHTML=
+      `<p style="color:#777">No members available.</p>`;
+
+    return;
+
+  }
+
+  if(target==="SPECIFIC"){
+
+    box.innerHTML=`
+
+      <div class="field">
+
+        <label>Member</label>
+
+        <select id="specificMember">
+
+          ${
+            state.members.map(m=>`
+
+              <option value="${esc(m.id)}">
+                ${esc(m.id)} — ${esc(m.name)}
+              </option>
+
+            `).join("")
+          }
+
+        </select>
+
+      </div>
+
+    `;
+
+    /*
+      Convert selected member into checkbox-like
+      hidden input when sending.
+    */
+
+    const select=
+      document.getElementById(
+        "specificMember"
+      );
+
+    if(select){
+
+      select.addEventListener(
+        "change",
+        ()=>{
+          updateSpecificSelection();
+        }
+      );
+
+      updateSpecificSelection();
+
+    }
+
+    return;
+
+  }
+
+  box.innerHTML=`
+
+    <div
+      style="
+        border:1px solid #252525;
+        border-radius:9px;
+        padding:10px;
+        max-height:200px;
+        overflow:auto;
+      "
+    >
+
+      ${
+        state.members.map(m=>`
+
+          <label
+            style="
+              display:block;
+              padding:7px;
+              border-bottom:1px solid #1d1d1d;
+            "
+          >
+
+            <input
+              type="checkbox"
+              value="${esc(m.id)}"
+            >
+
+            ${esc(m.id)}
+            —
+            ${esc(m.name)}
+
+          </label>
+
+        `).join("")
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+function updateSpecificSelection(){
+
+  const select=
+    document.getElementById(
+      "specificMember"
+    );
+
+  const box=
+    document.getElementById(
+      "announcementMembers"
+    );
+
+  if(!select || !box)return;
+
+  const old=
+    box.querySelector(
+      "#specificHidden"
+    );
+
+  if(old)old.remove();
+
+  const hidden=
+    document.createElement(
+      "input"
+    );
+
+  hidden.type="checkbox";
+
+  hidden.id="specificHidden";
+
+  hidden.value=select.value;
+
+  hidden.checked=true;
+
+  hidden.style.display="none";
+
+  box.appendChild(hidden);
+
+}
+
+
+function renderNotifications(){
+
+  const box=
+    document.getElementById(
+      "notificationHistory"
+    );
+
+  const list=
+    [...state.notifications]
+      .sort(
+        (a,b)=>
+          new Date(b.createdAt)-
+          new Date(a.createdAt)
+      )
+      .slice(0,100);
+
+  if(!list.length){
+
+    box.innerHTML=
+      `<p style="color:#777">No notifications.</p>`;
+
+    return;
+
+  }
+
+  box.innerHTML=
+    list.map(n=>`
+
+      <div
+        style="
+          padding:12px 0;
+          border-bottom:1px solid #222;
+        "
+      >
+
+        <strong style="color:var(--gold2)">
+          ${esc(n.title)}
+        </strong>
+
+        <div style="color:#ddd;margin:5px 0">
+          ${esc(n.message)}
+        </div>
+
+        <small style="color:#777">
+          To: ${esc(n.memberId)}
+          • ${formatDate(n.createdAt)}
+        </small>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function renderSettings(){
+
+  const input=
+    document.getElementById(
+      "adminPaymentNumber"
+    );
+
+  if(input){
+
+    input.value=
+      state.settings.paymentNumber||
+      "01313213083";
+
+  }
+
+}
+
+
+function saveAdminSettings(event){
+
+  event.preventDefault();
+
+  const number=
+    document.getElementById(
+      "adminPaymentNumber"
+    ).value.trim();
+
+  if(!number){
+
+    toast("Payment number is required.");
+
+    return;
+
+  }
+
+  state.settings.paymentNumber=
+    number;
+
+  saveState();
+
+  toast("Settings saved.");
+
+}
+
+
+/* =========================================================
+   IMAGE VIEWER
+========================================================= */
+
+function viewImage(data){
+
+  if(!data){
+
+    toast("No screenshot available.");
+
+    return;
+
+  }
+
+  const box=
+    document.getElementById(
+      "imageViewer"
+    );
+
+  box.innerHTML="";
+
+  const img=
+    document.createElement("img");
+
+  img.src=data;
+
+  img.alt="Payment Screenshot";
+
+  box.appendChild(img);
+
+  openModal(
+    "imageViewerModal"
+  );
+
+}
+
+
+function openModal(id){
+
+  const modal=
+    document.getElementById(id);
+
+  if(modal){
+    modal.classList.add("show");
+  }
+
+}
+
+
+function closeModal(id){
+
+  const modal=
+    document.getElementById(id);
+
+  if(modal){
+    modal.classList.remove("show");
+  }
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetDemo(){
+
+  const yes=
+    confirm(
+      "Are you sure? All prototype data will be deleted."
+    );
+
+  if(!yes)return;
+
+  localStorage.removeItem(
+    STORAGE_KEY
+  );
+
+  state=cloneDefault();
+
+  saveState();
+
+  toast("Demo data reset.");
+
+  setTimeout(
+    ()=>location.reload(),
+    700
+  );
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+checkAdminSession();
+
+</script>
+
+</body>
+</html>
