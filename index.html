@@ -1,0 +1,3970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INNOVA.GLOBAL — Smart Digital Network Platform</title>
+
+<style>
+:root{
+  --bg:#030405;
+  --card:#0a0c0f;
+  --card2:#0e1115;
+  --gold:#d8ad45;
+  --gold2:#f4d477;
+  --blue:#168cff;
+  --red:#ff3f3f;
+  --yellow:#ffd43b;
+  --green:#20d47b;
+  --text:#f2f2f2;
+  --muted:#9ca3af;
+  --border:#3b301b;
+  --danger:#ff5555;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  height:68px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#020303;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 14px;
+}
+
+.header-side{
+  width:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:1px solid #4a3a1b;
+  border-radius:10px;
+  background:#090909;
+  color:var(--gold2);
+  font-size:21px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-weight:800;
+  letter-spacing:1px;
+  color:var(--gold2);
+}
+
+.brand-logo{
+  width:38px;
+  height:38px;
+}
+
+/* ================= MAIN ================= */
+
+main{
+  width:min(1050px,94%);
+  margin:auto;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* ================= WELCOME ================= */
+
+.welcome{
+  min-height:calc(100vh - 68px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:38px 10px 25px;
+}
+
+.hero-logo{
+  width:155px;
+  height:155px;
+  margin:8px auto 18px;
+  filter:drop-shadow(0 0 20px rgba(216,173,69,.18));
+}
+
+.bismillah{
+  color:var(--gold2);
+  font-size:19px;
+  margin-bottom:13px;
+  font-weight:600;
+}
+
+.welcome h1{
+  font-size:clamp(30px,7vw,54px);
+  color:var(--gold2);
+  letter-spacing:1px;
+  margin-bottom:9px;
+}
+
+.tagline{
+  color:#cfd3d8;
+  font-size:15px;
+  margin-bottom:7px;
+}
+
+.connect{
+  color:var(--blue);
+  font-weight:bold;
+  letter-spacing:2px;
+  margin-bottom:28px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-bottom:38px;
+}
+
+.btn{
+  border:1px solid var(--gold);
+  background:#0b0b0b;
+  color:var(--gold2);
+  border-radius:10px;
+  padding:12px 20px;
+  font-weight:800;
+  min-width:135px;
+}
+
+.btn:hover{
+  background:#18130a;
+}
+
+.btn-primary{
+  background:linear-gradient(135deg,#a77b1f,#f1d274);
+  color:#050505;
+  border-color:#f4d477;
+}
+
+.btn-dark{
+  background:#090b0d;
+}
+
+.btn-blue{
+  border-color:#126ec8;
+  color:#56aaff;
+}
+
+.btn-danger{
+  border-color:#7d2424;
+  color:#ff7777;
+}
+
+/* ================= ABOUT ================= */
+
+.section-title{
+  color:var(--gold2);
+  text-align:center;
+  margin-bottom:18px;
+  font-size:25px;
+}
+
+.about-card{
+  width:min(850px,100%);
+  background:linear-gradient(145deg,#090b0d,#050607);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  text-align:left;
+  line-height:1.8;
+  color:#d5d8dc;
+  margin-bottom:35px;
+}
+
+.about-card strong{
+  color:var(--gold2);
+}
+
+.network-list{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.network-item{
+  border:1px solid #302715;
+  background:#080a0c;
+  border-radius:11px;
+  padding:15px;
+  text-align:center;
+}
+
+.network-item b{
+  display:block;
+  margin-bottom:5px;
+  color:var(--gold2);
+}
+
+.network-item span{
+  color:#aeb4bb;
+  font-size:13px;
+}
+
+/* ================= SOCIAL ================= */
+
+.social-section{
+  width:100%;
+  margin-top:auto;
+  padding-top:35px;
+}
+
+.social-row{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.social-link{
+  min-width:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  border:1px solid #3b301b;
+  background:#080a0c;
+  padding:13px 17px;
+  border-radius:12px;
+  color:#eee;
+  font-weight:700;
+}
+
+.social-link:hover{
+  border-color:var(--gold);
+}
+
+.social-icon{
+  width:30px;
+  height:30px;
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard-title{
+  color:var(--gold2);
+  margin:28px 0 16px;
+  font-size:27px;
+}
+
+.card{
+  background:linear-gradient(145deg,#0a0c0f,#060708);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.profile-img{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--gold);
+  background:#111;
+}
+
+.profile-info{
+  flex:1;
+}
+
+.profile-info h2{
+  color:var(--gold2);
+  font-size:21px;
+  margin-bottom:6px;
+}
+
+.profile-info p{
+  color:#b5bbc2;
+  margin:4px 0;
+  font-size:14px;
+}
+
+.active-status{
+  color:var(--green)!important;
+  font-weight:bold;
+}
+
+.actions{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.more-box{
+  display:none;
+  margin-top:12px;
+  border-top:1px solid #292216;
+  padding-top:12px;
+}
+
+.more-box.open{
+  display:block;
+}
+
+.detail-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  border-bottom:1px solid #191b1e;
+  padding:9px 0;
+  color:#c4c9cf;
+  font-size:14px;
+}
+
+.detail-row span:last-child{
+  color:var(--gold2);
+  text-align:right;
+}
+
+.profile-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+  margin-top:15px;
+}
+
+.profile-stats div{
+  background:#080a0c;
+  border:1px solid #28251e;
+  border-radius:10px;
+  padding:12px 7px;
+  text-align:center;
+}
+
+.profile-stats span{
+  display:block;
+  color:#9299a1;
+  font-size:11px;
+  margin-bottom:5px;
+}
+
+.profile-stats strong{
+  color:var(--gold2);
+}
+
+/* ================= PACKAGES ================= */
+
+.package-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.package-card{
+  background:linear-gradient(145deg,#0b0d10,#050607);
+  border:1px solid var(--border);
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.package-head{
+  padding:17px;
+  border-bottom:1px solid #282115;
+}
+
+.package-number{
+  color:var(--blue);
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.package-name{
+  color:var(--gold2);
+  font-size:21px;
+  margin:6px 0;
+}
+
+.package-price{
+  font-size:29px;
+  font-weight:900;
+  color:#fff;
+}
+
+.package-body{
+  padding:16px;
+}
+
+.package-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:14px;
+}
+
+.package-info div{
+  border:1px solid #24272b;
+  border-radius:9px;
+  padding:9px 5px;
+  text-align:center;
+}
+
+.package-info span{
+  display:block;
+  font-size:11px;
+  color:#888f97;
+}
+
+.package-info strong{
+  color:#e7e7e7;
+  font-size:13px;
+}
+
+.package-system{
+  display:none;
+  margin-top:14px;
+  border-top:1px solid #292216;
+  padding-top:14px;
+}
+
+.package-system.active{
+  display:block;
+}
+
+.ad-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+}
+
+.ad-btn{
+  border:1px solid #30343a;
+  background:#090b0d;
+  color:#ddd;
+  border-radius:9px;
+  padding:10px 5px;
+  font-size:12px;
+}
+
+.ad-btn.available{
+  border-color:#a87e25;
+  color:var(--gold2);
+}
+
+.ad-btn.locked{
+  color:#777;
+}
+
+.package-note{
+  color:#9299a1;
+  font-size:12px;
+  line-height:1.5;
+  margin-top:12px;
+}
+
+/* ================= OTHER ================= */
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.big-stat{
+  text-align:center;
+  padding:18px;
+}
+
+.big-stat span{
+  color:#969da5;
+  font-size:13px;
+}
+
+.big-stat strong{
+  display:block;
+  color:var(--gold2);
+  font-size:25px;
+  margin-top:6px;
+}
+
+.salary-status{
+  color:var(--yellow);
+  font-weight:bold;
+}
+
+.notice{
+  padding:12px;
+  border:1px solid #383021;
+  background:#0a0b0d;
+  border-radius:10px;
+  color:#bfc4ca;
+  font-size:13px;
+  line-height:1.6;
+}
+
+/* ================= SIDE MENU ================= */
+
+.side-menu{
+  position:fixed;
+  top:68px;
+  left:-280px;
+  width:260px;
+  height:calc(100vh - 68px);
+  background:#050607;
+  border-right:1px solid var(--border);
+  z-index:999;
+  padding:18px;
+  transition:.25s;
+}
+
+.side-menu.open{
+  left:0;
+}
+
+.menu-title{
+  color:var(--gold2);
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+.menu-item{
+  display:block;
+  width:100%;
+  padding:13px;
+  margin-bottom:8px;
+  background:#0b0d10;
+  border:1px solid #272319;
+  border-radius:10px;
+  color:#ddd;
+  text-align:left;
+}
+
+.menu-item:hover{
+  border-color:var(--gold);
+  color:var(--gold2);
+}
+
+/* ================= MODAL ================= */
+
+.modal-bg{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.82);
+  z-index:2000;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.modal-bg.open{
+  display:flex;
+}
+
+.modal{
+  width:min(520px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#080a0c;
+  border:1px solid var(--gold);
+  border-radius:16px;
+  padding:20px;
+  position:relative;
+}
+
+.modal h2{
+  color:var(--gold2);
+  margin-bottom:16px;
+}
+
+.close{
+  position:absolute;
+  right:12px;
+  top:10px;
+  background:none;
+  border:0;
+  color:#aaa;
+  font-size:27px;
+}
+
+.form-group{
+  margin-bottom:12px;
+}
+
+.form-group label{
+  display:block;
+  color:#bfc4ca;
+  font-size:13px;
+  margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select{
+  width:100%;
+  background:#030405;
+  color:#fff;
+  border:1px solid #36312a;
+  border-radius:9px;
+  padding:11px;
+  outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+  border-color:var(--gold);
+}
+
+.form-actions{
+  display:flex;
+  gap:9px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+
+.message{
+  display:none;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:12px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.message.show{
+  display:block;
+}
+
+.message.error{
+  border:1px solid #6d2929;
+  color:#ff8c8c;
+  background:#190909;
+}
+
+.message.success{
+  border:1px solid #285b3e;
+  color:#76e8a5;
+  background:#07150d;
+}
+
+.upload-box{
+  border:1px dashed #51462e;
+  border-radius:10px;
+  padding:12px;
+  background:#08090a;
+}
+
+.image-preview{
+  margin-top:10px;
+  text-align:center;
+}
+
+.image-preview img{
+  max-width:100%;
+  max-height:180px;
+  border-radius:10px;
+  border:1px solid #333;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:#101214;
+  border:1px solid var(--gold);
+  color:#eee;
+  padding:12px 18px;
+  border-radius:10px;
+  z-index:4000;
+  transition:.3s;
+  opacity:0;
+  max-width:90%;
+  text-align:center;
+}
+
+.toast.show{
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:800px){
+  .package-grid{
+    grid-template-columns:1fr;
+  }
+
+  .network-list{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:520px){
+  .profile{
+    align-items:flex-start;
+  }
+
+  .profile-img{
+    width:68px;
+    height:68px;
+  }
+
+  .profile-stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-logo{
+    width:125px;
+    height:125px;
+  }
+
+  .welcome h1{
+    font-size:31px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+  <div class="header-side">
+    <button class="icon-btn" type="button" onclick="toggleMenu()">☰</button>
+  </div>
+
+  <div class="brand">
+    <svg class="brand-logo" viewBox="0 0 100 100" aria-label="INNOVA.GLOBAL Globe Logo">
+      <circle cx="50" cy="50" r="43" fill="none" stroke="#d8ad45" stroke-width="4"/>
+      <ellipse cx="50" cy="50" rx="21" ry="43" fill="none" stroke="#d8ad45" stroke-width="2"/>
+      <ellipse cx="50" cy="50" rx="43" ry="17" fill="none" stroke="#d8ad45" stroke-width="2"/>
+      <path d="M18 35 Q31 29 43 34 Q51 38 58 31 Q70 20 83 31"
+            fill="none" stroke="#f4d477" stroke-width="3"/>
+      <path d="M18 61 Q29 55 39 61 Q48 68 58 59 Q69 49 82 62"
+            fill="none" stroke="#f4d477" stroke-width="3"/>
+      <path d="M28 76 Q38 69 49 74 Q61 81 73 72"
+            fill="none" stroke="#d8ad45" stroke-width="3"/>
+    </svg>
+    <span>INNOVA.GLOBAL</span>
+  </div>
+
+  <div class="header-side">
+    <button class="icon-btn" type="button" onclick="openSettings()">⚙</button>
+  </div>
+</header>
+
+<!-- ================= SIDE MENU ================= -->
+
+<div id="sideMenu" class="side-menu">
+  <div class="menu-title">MENU</div>
+
+  <button class="menu-item" type="button" onclick="openWithdrawal()">
+    Withdrawal
+  </button>
+
+  <button class="menu-item" type="button" onclick="openNotifications()">
+    Notifications
+  </button>
+
+  <button class="menu-item" type="button" onclick="logout()">
+    Logout
+  </button>
+</div>
+
+<main>
+
+<!-- ================= WELCOME PAGE ================= -->
+
+<section id="welcomePage" class="page active">
+
+  <div class="welcome">
+
+    <!-- Golden Globe -->
+    <svg class="hero-logo" viewBox="0 0 200 200" aria-label="INNOVA.GLOBAL Golden Globe">
+      <defs>
+        <radialGradient id="goldGlobe">
+          <stop offset="0%" stop-color="#fff1a8"/>
+          <stop offset="45%" stop-color="#e1b94f"/>
+          <stop offset="100%" stop-color="#8b6419"/>
+        </radialGradient>
+      </defs>
+
+      <circle cx="100" cy="100" r="88"
+              fill="url(#goldGlobe)"
+              opacity=".10"/>
+
+      <circle cx="100" cy="100" r="80"
+              fill="none"
+              stroke="#d8ad45"
+              stroke-width="5"/>
+
+      <ellipse cx="100" cy="100" rx="38" ry="80"
+               fill="none"
+               stroke="#f4d477"
+               stroke-width="3"/>
+
+      <ellipse cx="100" cy="100" rx="80" ry="32"
+               fill="none"
+               stroke="#d8ad45"
+               stroke-width="3"/>
+
+      <ellipse cx="100" cy="100" rx="80" ry="55"
+               fill="none"
+               stroke="#b98a2c"
+               stroke-width="2"/>
+
+      <!-- stylized continents -->
+      <path d="M46 57
+               Q56 44 70 48
+               L80 58 L73 69
+               L61 67 L55 77
+               L43 70 Z"
+            fill="#f4d477"/>
+
+      <path d="M112 48
+               L128 42 L144 51 L138 62
+               L126 64 L121 75
+               L110 69 L114 58 Z"
+            fill="#f4d477"/>
+
+      <path d="M89 86
+               L103 80 L115 88 L111 101
+               L104 112 L108 126
+               L99 139 L91 128
+               L93 113 L86 101 Z"
+            fill="#d8ad45"/>
+
+      <path d="M128 105
+               L146 101 L158 111
+               L151 122 L138 121 L131 132
+               L120 124 L125 114 Z"
+            fill="#f4d477"/>
+
+      <path d="M61 117
+               L76 111 L83 121 L78 134 L67 142 L58 133 Z"
+            fill="#b98a2c"/>
+
+      <text x="100" y="178"
+            text-anchor="middle"
+            fill="#f4d477"
+            font-size="14"
+            font-weight="bold"
+            letter-spacing="2">
+        INNOVA
+      </text>
+    </svg>
+
+    <div class="bismillah">
+      Bismillahir Rahmanir Rahim
+    </div>
+
+    <h1>Welcome to INNOVA.GLOBAL</h1>
+
+    <div class="tagline">
+      Smart Digital Network Platform
+    </div>
+
+    <div class="connect">
+      CONNECT • LEARN • GROW
+    </div>
+
+    <div class="hero-actions">
+      <button class="btn btn-primary" type="button" onclick="openJoin()">
+        JOIN NOW
+      </button>
+
+      <button class="btn btn-dark" type="button" onclick="openLogin()">
+        LOGIN
+      </button>
+    </div>
+
+    <!-- ABOUT -->
+    <h2 class="section-title">About INNOVA.GLOBAL</h2>
+
+    <div class="about-card">
+      <p>
+        <strong>INNOVA.GLOBAL</strong> is a Smart Digital Network Platform
+        designed to provide a structured environment for members to connect,
+        learn, participate in digital activities and manage their account
+        through a member dashboard.
+      </p>
+
+      <p style="margin-top:12px">
+        The platform is organized around member accounts, referral
+        relationships, packages, digital tasks, earnings records,
+        notifications, salary features and withdrawal requests.
+      </p>
+
+      <div class="network-list">
+
+        <div class="network-item">
+          <b>Member Network</b>
+          <span>Account and member management</span>
+        </div>
+
+        <div class="network-item">
+          <b>Referral Network</b>
+          <span>Referral and team relationships</span>
+        </div>
+
+        <div class="network-item">
+          <b>Package System</b>
+          <span>Package-based member features</span>
+        </div>
+
+        <div class="network-item">
+          <b>Task Network</b>
+          <span>Digital task participation</span>
+        </div>
+
+        <div class="network-item">
+          <b>Salary System</b>
+          <span>Qualification and salary records</span>
+        </div>
+
+        <div class="network-item">
+          <b>Withdrawal System</b>
+          <span>Withdrawal request management</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SOCIAL AT VERY BOTTOM -->
+
+    <div class="social-section">
+
+      <h2 class="section-title">Official Channels</h2>
+
+      <div class="social-row">
+
+        <!-- Telegram -->
+        <a
+          class="social-link"
+          href="https://t.me/powernetwork7xofficialchannel"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="social-icon" viewBox="0 0 100 100" aria-label="Telegram Logo">
+            <circle cx="50" cy="50" r="48" fill="#229ED9"/>
+            <path d="M22 48 L76 27 Q81 25 79 32 L68 75 Q67 80 62 77 L48 66 L40 74 Q38 76 37 72 L38 61 L68 36 L42 54 L29 50 Q19 48 22 48Z"
+                  fill="#fff"/>
+          </svg>
+          <span>Telegram Channel</span>
+        </a>
+
+        <!-- YouTube -->
+        <a
+          class="social-link"
+          href="https://www.youtube.com/@PowerNetwork7X"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="social-icon" viewBox="0 0 100 100" aria-label="YouTube Logo">
+            <rect x="8" y="23" width="84" height="54" rx="16" fill="#FF0000"/>
+            <path d="M43 37 L43 63 L67 50 Z" fill="#fff"/>
+          </svg>
+          <span>YouTube Channel</span>
+        </a>
+
+      </div>
+
+      <p style="color:#666;font-size:12px;margin-top:22px">
+        © 2026 INNOVA.GLOBAL
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MEMBER DASHBOARD ================= -->
+
+<section id="dashboardPage" class="page">
+
+  <h1 class="dashboard-title">Member Dashboard</h1>
+
+  <!-- PROFILE -->
+  <div class="card">
+
+    <div class="profile">
+
+      <img
+        id="profileImage"
+        class="profile-img"
+        src=""
+        alt="Profile Picture"
+      >
+
+      <div class="profile-info">
+        <h2 id="profileName">Member</h2>
+        <p id="profileId">INNOVA ID 0001</p>
+        <p id="profileUid">UID —</p>
+        <p id="profileStatus" class="active-status">
+          ● ID ACTIVE
+        </p>
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-dark" type="button" onclick="toggleMore()">
+        SHOW MORE
+      </button>
+    </div>
+
+    <div id="profileMore" class="more-box">
+
+      <div class="detail-row">
+        <span>Upline ID</span>
+        <span id="profileUpline">—</span>
+      </div>
+
+      <div class="detail-row">
+        <span>Referral Link</span>
+        <span id="myReferralLink"
+              style="max-width:70%;overflow-wrap:anywhere">
+          —
+        </span>
+      </div>
+
+      <div class="detail-row">
+        <span>Joining Time</span>
+        <span id="profileJoiningTime">—</span>
+      </div>
+
+      <div class="detail-row">
+        <span>Joining Date</span>
+        <span id="profileJoiningDate">—</span>
+      </div>
+
+    </div>
+
+    <div class="profile-stats">
+
+      <div>
+        <span>Total Team</span>
+        <strong id="profileTeam">0</strong>
+      </div>
+
+      <div>
+        <span>Total Partners</span>
+        <strong id="profilePartners">0</strong>
+      </div>
+
+      <div>
+        <span>Joining</span>
+        <strong id="profileJoining">0</strong>
+      </div>
+
+      <div>
+        <span>Earning</span>
+        <strong id="profileEarning">৳0</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- PACKAGES -->
+
+  <h2 class="section-title">PACKAGES</h2>
+
+  <div id="packageGrid" class="package-grid"></div>
+
+
+  <!-- TOTAL REFERRAL -->
+
+  <div class="card">
+    <h2 class="section-title">Total Referral</h2>
+
+    <div class="stats-grid">
+
+      <div class="big-stat">
+        <span>Direct Partners</span>
+        <strong id="directPartners">0</strong>
+      </div>
+
+      <div class="big-stat">
+        <span>Total Team</span>
+        <strong id="totalTeam">0</strong>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- GLOBAL -->
+
+  <div class="card">
+    <h2 class="section-title">Global Joining</h2>
+
+    <div class="big-stat">
+      <span>Total Active Members</span>
+      <strong id="globalJoining">0</strong>
+    </div>
+  </div>
+
+
+  <!-- SALARY -->
+
+  <div class="card">
+
+    <h2 class="section-title">Salary System</h2>
+
+    <div class="notice">
+      <div>
+        Status:
+        <strong id="salaryStatus" class="salary-status">
+          SALARY SYSTEM OFF
+        </strong>
+      </div>
+
+      <div style="margin-top:8px">
+        Current Month:
+        <strong id="salaryMonth">—</strong>
+      </div>
+
+      <div style="margin-top:8px">
+        Direct Partners:
+        <strong id="salaryDirect">0</strong>
+        &nbsp; | &nbsp;
+        Team:
+        <strong id="salaryTeam">0</strong>
+      </div>
+
+      <div style="margin-top:8px">
+        Salary Amount:
+        <strong id="salaryAmount">৳0</strong>
+      </div>
+    </div>
+
+    <div id="salaryHistory" style="margin-top:12px"></div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= REGISTER MODAL ================= -->
+
+<div id="registerModal" class="modal-bg">
+
+  <div class="modal">
+
+    <button class="close" type="button"
+            onclick="closeModal('registerModal')">×</button>
+
+    <h2>Create Account</h2>
+
+    <div id="registerMessage" class="message"></div>
+
+    <form onsubmit="registerMember(event)">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input id="regName" required>
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input
+          id="regMobile"
+          type="tel"
+          inputmode="numeric"
+          maxlength="15"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input id="regPassword" type="password" required>
+      </div>
+
+      <div class="form-group">
+        <label>Referral ID / Link</label>
+        <input id="regReferral">
+      </div>
+
+      <div class="form-actions">
+
+        <button class="btn btn-primary" type="submit">
+          CREATE ACCOUNT
+        </button>
+
+        <button class="btn btn-dark" type="button"
+                onclick="closeModal('registerModal')">
+          CANCEL
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div id="loginModal" class="modal-bg">
+
+  <div class="modal">
+
+    <button class="close" type="button"
+            onclick="closeModal('loginModal')">×</button>
+
+    <h2>Member Login</h2>
+
+    <div id="loginMessage" class="message"></div>
+
+    <form onsubmit="loginMember(event)">
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input id="loginMobile" type="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input id="loginPassword" type="password" required>
+      </div>
+
+      <div class="form-actions">
+
+        <button class="btn btn-primary" type="submit">
+          LOGIN
+        </button>
+
+        <button class="btn btn-dark" type="button"
+                onclick="closeModal('loginModal')">
+          CANCEL
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- ================= ACTIVATION MODAL ================= -->
+
+<div id="activationModal" class="modal-bg">
+
+  <div class="modal">
+
+    <button class="close" type="button"
+            onclick="closeModal('activationModal')">×</button>
+
+    <h2>Activate Your ID</h2>
+
+    <div id="activationMessage" class="message"></div>
+
+    <div class="notice" style="margin-bottom:14px">
+      Activation Fee:
+      <strong style="color:var(--gold2)">৳200</strong>
+      <br>
+      Payment Number:
+      <strong style="color:var(--gold2)">01313213083</strong>
+    </div>
+
+    <form onsubmit="submitActivation(event)">
+
+      <div class="form-group">
+        <label>Payment Method</label>
+
+        <select id="activationMethod" required>
+          <option value="">Select Method</option>
+          <option value="bKash">bKash</option>
+          <option value="Nagad">Nagad</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Sender Mobile Number</label>
+        <input id="activationSender" type="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label>Transaction ID</label>
+        <input id="activationTrx" required>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Screenshot</label>
+
+        <div class="upload-box">
+
+          <input
+            id="activationScreenshot"
+            type="file"
+            accept="image/*"
+            onchange="previewImage(this,'activationPreview')"
+            required
+          >
+
+          <div id="activationPreview"
+               class="image-preview"></div>
+
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button class="btn btn-primary" type="submit">
+          SUBMIT ACTIVATION
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- ================= PACKAGE PAYMENT MODAL ================= -->
+
+<div id="packagePaymentModal" class="modal-bg">
+
+  <div class="modal">
+
+    <button class="close" type="button"
+            onclick="closeModal('packagePaymentModal')">×</button>
+
+    <h2 id="packagePaymentTitle">Package Activation</h2>
+
+    <div id="packagePaymentMessage" class="message"></div>
+
+    <div class="notice" style="margin-bottom:14px">
+      Payment Number:
+      <strong style="color:var(--gold2)">01313213083</strong>
+      <br>
+      Selected Package:
+      <strong id="selectedPackageName" style="color:var(--gold2)">—</strong>
+      <br>
+      Amount:
+      <strong id="selectedPackagePrice" style="color:var(--gold2)">৳0</strong>
+    </div>
+
+    <form onsubmit="submitPackagePayment(event)">
+
+      <div class="form-group">
+        <label>Payment Method</label>
+
+        <select id="packagePaymentMethod" required>
+          <option value="">Select Method</option>
+          <option value="bKash">bKash</option>
+          <option value="Nagad">Nagad</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Sender Mobile Number</label>
+        <input id="packagePaymentSender" type="tel" required>
+      </div>
+
+      <div class="form-group">
+        <label>Transaction ID</label>
+        <input id="packagePaymentTrx" required>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Screenshot</label>
+
+        <div class="upload-box">
+
+          <input
+            id="packagePaymentScreenshot"
+            type="file"
+            accept="image/*"
+            onchange="previewImage(this,'packagePaymentPreview')"
+            required
+          >
+
+          <div id="packagePaymentPreview"
+               class="image-preview"></div>
+
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button class="btn btn-primary" type="submit">
+          SUBMIT PAYMENT
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- ================= WITHDRAWAL MODAL ================= -->
+
+<div id="withdrawalModal" class="modal-bg">
+
+  <div class="modal">
+
+    <button class="close" type="button"
+            onclick="closeModal('withdrawalModal')">×</button>
+
+    <h2>Withdrawal</h2>
+
+    <div id="withdrawalMessage" class="message"></div>
+
+    <div class="notice" style="margin-bottom:14px">
+      Withdrawal requires at least
+      <strong style="color:var(--gold2)">10 Direct Partners</strong>.
+      <br>
+      Available Balance:
+      <strong id="withdrawBalance"
+              style="color:var(--gold2)">৳0</strong>
+    </div>
+
+    <form onsubmit="submitWithdrawal(event)">
+
+      <div class="form-group">
+        <label>Amount</label>
+        <input id="withdrawAmount" type="number" min="1" required>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Method</label>
+
+        <select id="withdrawMethod" required>
+          <option value="">Select Method</option>
+          <option value="bKash">bKash</option>
+          <option value="Nagad">Nagad</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Account Number</label>
+        <input id="withdrawAccount" type="tel" required>
+      </div>
+
+      <div class="form-actions">
+
+        <button class="btn btn-primary" type="submit">
+          SUBMIT WITHDRAWAL
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- ================= NOTIFICATIONS MODAL ================= -->
+
+<div id="notificationsModal" class="modal-bg">
+
+  <div class="modal">
+
+    <button class="close" type="button"
+            onclick="closeModal('notificationsModal')">×</button>
+
+    <h2>Notifications</h2>
+
+    <div id="notificationList"></div>
+
+  </div>
+</div>
+
+
+<!-- ================= SETTINGS MODAL ================= -->
+
+<div id="settingsModal" class="modal-bg">
+
+  <div class="modal">
+
+    <button class="close" type="button"
+            onclick="closeModal('settingsModal')">×</button>
+
+    <h2>Settings</h2>
+
+    <div id="settingsMessage" class="message"></div>
+
+    <div class="form-group">
+      <label>Profile Picture</label>
+
+      <div class="upload-box">
+
+        <input
+          id="profilePictureInput"
+          type="file"
+          accept="image/*"
+          onchange="previewImage(this,'profilePicturePreview')"
+        >
+
+        <div id="profilePicturePreview"
+             class="image-preview"></div>
+
+      </div>
+    </div>
+
+    <div class="form-actions">
+
+      <button class="btn btn-primary"
+              type="button"
+              onclick="saveSettings()">
+        SAVE SETTINGS
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ================= IMAGE VIEWER ================= -->
+
+<div id="imageViewerModal" class="modal-bg">
+
+  <div class="modal" style="text-align:center">
+
+    <button class="close" type="button"
+            onclick="closeModal('imageViewerModal')">×</button>
+
+    <h2>Payment Screenshot</h2>
+
+    <div id="imageViewer"></div>
+
+  </div>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+/* =========================================================
+   INNOVA.GLOBAL PUBLIC WEBSITE
+   Prototype state structure
+   ========================================================= */
+
+const STORAGE_KEY = "innova_global_real_v1";
+
+const defaultState = {
+  settings:{
+    paymentNumber:"01313213083"
+  },
+
+  members:[],
+
+  packages:[
+    {
+      id:"PKG200",
+      name:"Starter Package",
+      price:200,
+      days:15,
+      tasks:12,
+      timer:20,
+      daily:50,
+      active:true
+    },
+    {
+      id:"PKG300",
+      name:"Growth Package",
+      price:300,
+      days:15,
+      tasks:12,
+      timer:20,
+      daily:100,
+      active:true
+    },
+    {
+      id:"PKG400",
+      name:"Professional Package",
+      price:400,
+      days:15,
+      tasks:12,
+      timer:20,
+      daily:150,
+      active:true
+    }
+  ],
+
+  packagePayments:[],
+  withdrawals:[],
+  notifications:[],
+
+  salary:{
+    enabled:false,
+    levels:[],
+    records:[]
+  }
+};
+
+let state = loadState();
+let currentMemberId = localStorage.getItem("innova_current_member_v1") || null;
+
+let selectedPackageId = null;
+
+let runningTaskPackageId = null;
+let runningTaskAdIndex = null;
+
+let adTimer = null;
+
+const AD_INTERVAL_MS = 24*60*60*1000;
+
+
+/* ================= STATE ================= */
+
+function clone(obj){
+  return JSON.parse(JSON.stringify(obj));
+}
+
+function loadState(){
+
+  try{
+
+    const raw = localStorage.getItem(STORAGE_KEY);
+
+    if(!raw){
+      return clone(defaultState);
+    }
+
+    const parsed = JSON.parse(raw);
+
+    return normalizeState(parsed);
+
+  }catch(e){
+
+    console.error(e);
+
+    return clone(defaultState);
+  }
+}
+
+function normalizeState(s){
+
+  if(!s || typeof s!=="object"){
+    s = clone(defaultState);
+  }
+
+  if(!s.settings) s.settings={};
+
+  if(!s.settings.paymentNumber){
+    s.settings.paymentNumber="01313213083";
+  }
+
+  if(!Array.isArray(s.members)) s.members=[];
+  if(!Array.isArray(s.packages)) s.packages=clone(defaultState.packages);
+  if(!Array.isArray(s.packagePayments)) s.packagePayments=[];
+  if(!Array.isArray(s.withdrawals)) s.withdrawals=[];
+  if(!Array.isArray(s.notifications)) s.notifications=[];
+
+  if(!s.salary) s.salary={};
+
+  if(typeof s.salary.enabled!=="boolean"){
+    s.salary.enabled=false;
+  }
+
+  if(!Array.isArray(s.salary.levels)){
+    s.salary.levels=[];
+  }
+
+  if(!Array.isArray(s.salary.records)){
+    s.salary.records=[];
+  }
+
+  s.members.forEach(m=>{
+
+    if(!m.adHistory) m.adHistory={};
+
+    if(m.balance==null) m.balance=0;
+    if(m.totalEarning==null) m.totalEarning=0;
+    if(m.salaryIncome==null) m.salaryIncome=0;
+    if(m.profileImage==null) m.profileImage="";
+
+  });
+
+  return s;
+}
+
+function saveState(){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(state)
+  );
+}
+
+
+/* ================= HELPERS ================= */
+
+function money(n){
+
+  return "৳"+Number(n||0).toLocaleString("en-US");
+}
+
+function now(){
+
+  return new Date().toISOString();
+}
+
+function formatDate(value){
+
+  if(!value) return "—";
+
+  const d = new Date(value);
+
+  return d.toLocaleDateString(
+    "en-BD",
+    {
+      year:"numeric",
+      month:"long",
+      day:"numeric"
+    }
+  );
+}
+
+function formatDateTime(value){
+
+  if(!value) return "—";
+
+  const d = new Date(value);
+
+  return d.toLocaleString(
+    "en-BD",
+    {
+      dateStyle:"medium",
+      timeStyle:"short"
+    }
+  );
+}
+
+function esc(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function getCurrentMember(){
+
+  if(!currentMemberId) return null;
+
+  return state.members.find(
+    m=>m.id===currentMemberId
+  ) || null;
+}
+
+function showToast(text){
+
+  const el=document.getElementById("toast");
+
+  el.textContent=text;
+
+  el.classList.add("show");
+
+  clearTimeout(showToast.timer);
+
+  showToast.timer=setTimeout(()=>{
+    el.classList.remove("show");
+  },3000);
+}
+
+function messageBox(id,text,type){
+
+  const el=document.getElementById(id);
+
+  if(!el) return;
+
+  el.textContent=text;
+
+  el.className="message "+type+" show";
+}
+
+function clearMessage(id){
+
+  const el=document.getElementById(id);
+
+  if(!el) return;
+
+  el.textContent="";
+  el.className="message";
+}
+
+
+/* ================= MODALS ================= */
+
+function openModal(id){
+
+  const el=document.getElementById(id);
+
+  if(el) el.classList.add("open");
+}
+
+function closeModal(id){
+
+  const el=document.getElementById(id);
+
+  if(el) el.classList.remove("open");
+}
+
+
+/* ================= MENU ================= */
+
+function toggleMenu(){
+
+  document
+    .getElementById("sideMenu")
+    .classList.toggle("open");
+}
+
+function closeMenu(){
+
+  document
+    .getElementById("sideMenu")
+    .classList.remove("open");
+}
+
+
+/* ================= PAGES ================= */
+
+function showPage(page){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
+
+  const target=document.getElementById(page);
+
+  if(target){
+    target.classList.add("active");
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* ================= JOIN ================= */
+
+function openJoin(){
+
+  clearRegister();
+
+  const ref =
+    new URLSearchParams(
+      location.search
+    ).get("ref");
+
+  const input=document.getElementById("regReferral");
+
+  if(ref){
+
+    input.value=ref;
+    input.readOnly=true;
+
+  }else{
+
+    input.readOnly=false;
+  }
+
+  openModal("registerModal");
+}
+
+function clearRegister(){
+
+  document.getElementById("regName").value="";
+  document.getElementById("regMobile").value="";
+  document.getElementById("regPassword").value="";
+
+  const refInput=document.getElementById("regReferral");
+
+  refInput.value="";
+  refInput.readOnly=false;
+
+  clearMessage("registerMessage");
+}
+
+
+/* ================= ID NUMBER ================= */
+
+function getNextMemberNumber(){
+
+  let max=0;
+
+  state.members.forEach(m=>{
+
+    const match=String(m.id).match(
+      /INNOVA ID (\d+)/
+    );
+
+    if(match){
+
+      max=Math.max(
+        max,
+        Number(match[1])
+      );
+
+    }
+
+  });
+
+  return max+1;
+}
+
+function makeMemberId(){
+
+  return "INNOVA ID "+
+    String(getNextMemberNumber())
+      .padStart(4,"0");
+}
+
+function makeUID(){
+
+  return "UID"+
+    Math.random()
+      .toString(36)
+      .substring(2,10)
+      .toUpperCase();
+}
+
+
+/* ================= REFERRAL ================= */
+
+function findMemberByReferral(value){
+
+  if(!value) return null;
+
+  const v=String(value)
+    .trim()
+    .toLowerCase();
+
+  return state.members.find(m=>{
+
+    return (
+      String(m.id).toLowerCase()===v ||
+      String(m.referralCode||"").toLowerCase()===v
+    );
+
+  }) || null;
+}
+
+function referralLink(member){
+
+  return location.origin+
+    location.pathname+
+    "?ref="+
+    encodeURIComponent(member.id);
+}
+
+function addNotification(
+  memberId,
+  type,
+  message
+){
+
+  state.notifications.unshift({
+
+    id:Date.now()+"_"+Math.random(),
+
+    memberId,
+
+    type,
+
+    message,
+
+    read:false,
+
+    createdAt:now()
+
+  });
+}
+
+
+/* ================= REGISTER ================= */
+
+function registerMember(event){
+
+  event.preventDefault();
+
+  clearMessage("registerMessage");
+
+  const name=
+    document.getElementById("regName")
+      .value.trim();
+
+  const mobile=
+    document.getElementById("regMobile")
+      .value.trim();
+
+  const password=
+    document.getElementById("regPassword")
+      .value;
+
+  const referral=
+    document.getElementById("regReferral")
+      .value.trim();
+
+  if(name.length<2){
+
+    messageBox(
+      "registerMessage",
+      "Please enter your full name.",
+      "error"
+    );
+
+    return false;
+  }
+
+  if(mobile.length<8){
+
+    messageBox(
+      "registerMessage",
+      "Please enter a valid mobile number.",
+      "error"
+    );
+
+    return false;
+  }
+
+  if(password.length<6){
+
+    messageBox(
+      "registerMessage",
+      "Password must contain at least 6 characters.",
+      "error"
+    );
+
+    return false;
+  }
+
+  const existing=
+    state.members.find(
+      m=>m.mobile===mobile
+    );
+
+  if(existing){
+
+    messageBox(
+      "registerMessage",
+      "This mobile number is already registered.",
+      "error"
+    );
+
+    return false;
+  }
+
+  let upline=null;
+
+  if(state.members.length>0){
+
+    if(!referral){
+
+      messageBox(
+        "registerMessage",
+        "Referral ID / Link is required for this registration.",
+        "error"
+      );
+
+      return false;
+    }
+
+    upline=findMemberByReferral(referral);
+
+    if(!upline){
+
+      messageBox(
+        "registerMessage",
+        "Invalid Referral ID / Link.",
+        "error"
+      );
+
+      return false;
+    }
+
+    if(upline.status!=="ACTIVE"){
+
+      messageBox(
+        "registerMessage",
+        "The selected Referral ID is not active.",
+        "error"
+      );
+
+      return false;
+    }
+
+  }
+
+  const member={
+
+    id:makeMemberId(),
+
+    uid:makeUID(),
+
+    name,
+
+    mobile,
+
+    password,
+
+    uplineId:upline ? upline.id : "",
+
+    status:"PENDING",
+
+    createdAt:now(),
+
+    activatedAt:null,
+
+    balance:0,
+
+    totalEarning:0,
+
+    salaryIncome:0,
+
+    packageId:null,
+
+    packageActivatedAt:null,
+
+    packageExpiresAt:null,
+
+    adHistory:{},
+
+    profileImage:"",
+
+    referralCode:"REF"+
+      Math.random()
+        .toString(36)
+        .substring(2,8)
+        .toUpperCase()
+
+  };
+
+  state.members.push(member);
+
+  saveState();
+
+  currentMemberId=member.id;
+
+  localStorage.setItem(
+    "innova_current_member_v1",
+    currentMemberId
+  );
+
+  if(upline){
+
+    addNotification(
+      upline.id,
+      "New Referral",
+      member.id+" registered under your referral."
+    );
+
+    saveState();
+
+  }
+
+  closeModal("registerModal");
+
+  openActivation(member.id);
+
+  showToast(
+    "Account created. Complete ID activation."
+  );
+
+  return false;
+}
+
+
+/* ================= ACTIVATION ================= */
+
+function openActivation(memberId){
+
+  currentMemberId=memberId;
+
+  document.getElementById(
+    "activationSender"
+  ).value="";
+
+  document.getElementById(
+    "activationTrx"
+  ).value="";
+
+  document.getElementById(
+    "activationScreenshot"
+  ).value="";
+
+  document.getElementById(
+    "activationPreview"
+  ).innerHTML="";
+
+  clearMessage("activationMessage");
+
+  openModal("activationModal");
+}
+
+async function submitActivation(event){
+
+  event.preventDefault();
+
+  clearMessage("activationMessage");
+
+  const m=getCurrentMember();
+
+  if(!m){
+
+    messageBox(
+      "activationMessage",
+      "Member account not found.",
+      "error"
+    );
+
+    return false;
+  }
+
+  const method=
+    document.getElementById(
+      "activationMethod"
+    ).value;
+
+  const sender=
+    document.getElementById(
+      "activationSender"
+    ).value.trim();
+
+  const trx=
+    document.getElementById(
+      "activationTrx"
+    ).value.trim();
+
+  const file=
+    document.getElementById(
+      "activationScreenshot"
+    ).files[0];
+
+  if(!method||!sender||!trx||!file){
+
+    messageBox(
+      "activationMessage",
+      "Please complete all payment fields and upload the screenshot.",
+      "error"
+    );
+
+    return false;
+  }
+
+  try{
+
+    const screenshot=
+      await compressImage(file);
+
+    state.packagePayments.push({
+
+      id:Date.now(),
+
+      memberId:m.id,
+
+      type:"ID_ACTIVATION",
+
+      amount:200,
+
+      packageId:null,
+
+      method,
+
+      sender,
+
+      trx,
+
+      screenshot,
+
+      status:"PENDING",
+
+      createdAt:now(),
+
+      approvedAt:null
+
+    });
+
+    saveState();
+
+    closeModal("activationModal");
+
+    showToast(
+      "Activation submitted. Please wait for Admin approval."
+    );
+
+  }catch(error){
+
+    messageBox(
+      "activationMessage",
+      error.message ||
+      "Could not process screenshot.",
+      "error"
+    );
+
+  }
+
+  return false;
+}
+
+
+/* ================= LOGIN ================= */
+
+function openLogin(){
+
+  document.getElementById("loginMobile").value="";
+  document.getElementById("loginPassword").value="";
+
+  clearMessage("loginMessage");
+
+  openModal("loginModal");
+}
+
+function loginMember(event){
+
+  event.preventDefault();
+
+  clearMessage("loginMessage");
+
+  const mobile=
+    document.getElementById("loginMobile")
+      .value.trim();
+
+  const password=
+    document.getElementById("loginPassword")
+      .value;
+
+  const member=
+    state.members.find(
+      m=>m.mobile===mobile
+    );
+
+  if(!member){
+
+    messageBox(
+      "loginMessage",
+      "Account not found.",
+      "error"
+    );
+
+    return false;
+  }
+
+  if(member.password!==password){
+
+    messageBox(
+      "loginMessage",
+      "Incorrect password.",
+      "error"
+    );
+
+    return false;
+  }
+
+  if(member.status!=="ACTIVE"){
+
+    messageBox(
+      "loginMessage",
+      "ID is pending activation. Please complete activation and wait for Admin approval.",
+      "error"
+    );
+
+    return false;
+  }
+
+  currentMemberId=member.id;
+
+  localStorage.setItem(
+    "innova_current_member_v1",
+    currentMemberId
+  );
+
+  closeModal("loginModal");
+
+  renderMember();
+
+  showPage("dashboardPage");
+
+  showToast(
+    "Welcome back, "+member.name+"."
+  );
+
+  return false;
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+  currentMemberId=null;
+
+  localStorage.removeItem(
+    "innova_current_member_v1"
+  );
+
+  closeMenu();
+
+  showPage("welcomePage");
+
+  showToast("You have been logged out.");
+}
+
+
+/* ================= PROFILE ================= */
+
+function toggleMore(){
+
+  document
+    .getElementById("profileMore")
+    .classList.toggle("open");
+}
+
+function renderMember(){
+
+  const m=getCurrentMember();
+
+  if(!m){
+
+    showPage("welcomePage");
+    return;
+  }
+
+  document.getElementById(
+    "profileName"
+  ).textContent=m.name;
+
+  document.getElementById(
+    "profileId"
+  ).textContent=m.id;
+
+  document.getElementById(
+    "profileUid"
+  ).textContent="UID "+m.uid;
+
+  document.getElementById(
+    "profileStatus"
+  ).textContent=
+    m.status==="ACTIVE"
+      ? "● ID ACTIVE"
+      : "● ID "+m.status;
+
+  const img=
+    document.getElementById("profileImage");
+
+  img.src=
+    m.profileImage ||
+    createDefaultAvatar(m.name);
+
+  document.getElementById(
+    "profileUpline"
+  ).textContent=m.uplineId || "ROOT";
+
+  document.getElementById(
+    "myReferralLink"
+  ).textContent=referralLink(m);
+
+  document.getElementById(
+    "profileJoiningTime"
+  ).textContent=
+    formatDateTime(m.activatedAt || m.createdAt);
+
+  document.getElementById(
+    "profileJoiningDate"
+  ).textContent=
+    formatDate(m.activatedAt || m.createdAt);
+
+  const team=getTeam(m.id);
+
+  const direct=state.members.filter(
+    x=>
+      x.uplineId===m.id &&
+      x.status==="ACTIVE"
+  ).length;
+
+  document.getElementById(
+    "profileTeam"
+  ).textContent=team.length;
+
+  document.getElementById(
+    "profilePartners"
+  ).textContent=direct;
+
+  document.getElementById(
+    "profileJoining"
+  ).textContent=state.members.filter(
+    x=>x.status==="ACTIVE"
+  ).length;
+
+  document.getElementById(
+    "profileEarning"
+  ).textContent=
+    money(m.totalEarning);
+
+  document.getElementById(
+    "directPartners"
+  ).textContent=direct;
+
+  document.getElementById(
+    "totalTeam"
+  ).textContent=team.length;
+
+  document.getElementById(
+    "globalJoining"
+  ).textContent=
+    state.members.filter(
+      x=>x.status==="ACTIVE"
+    ).length;
+
+  renderMemberPackages();
+  renderSalary();
+
+}
+
+
+/* ================= DEFAULT AVATAR ================= */
+
+function createDefaultAvatar(name){
+
+  const first=
+    String(name||"M")
+      .trim()
+      .charAt(0)
+      .toUpperCase();
+
+  const svg=`
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="200" height="200">
+      <rect width="200" height="200"
+            fill="#111"/>
+      <circle cx="100" cy="100" r="78"
+              fill="#18140c"
+              stroke="#d8ad45"
+              stroke-width="5"/>
+      <text x="100" y="125"
+            text-anchor="middle"
+            font-size="90"
+            font-family="Arial"
+            font-weight="bold"
+            fill="#f4d477">${first}</text>
+    </svg>
+  `;
+
+  return "data:image/svg+xml;charset=UTF-8,"+
+    encodeURIComponent(svg);
+}
+
+
+/* ================= TEAM ================= */
+
+function getTeam(memberId){
+
+  const result=[];
+
+  function walk(id){
+
+    state.members
+      .filter(
+        m=>
+          m.uplineId===id &&
+          m.status==="ACTIVE"
+      )
+      .forEach(child=>{
+
+        result.push(child);
+
+        walk(child.id);
+
+      });
+
+  }
+
+  walk(memberId);
+
+  return result;
+}
+
+
+/* ================= PACKAGE SYSTEM ================= */
+
+function renderMemberPackages(){
+
+  const box=
+    document.getElementById("packageGrid");
+
+  if(!box) return;
+
+  const m=getCurrentMember();
+
+  if(!m){
+
+    box.innerHTML="";
+
+    return;
+  }
+
+  const activePackages=
+    state.packages.filter(
+      p=>p.active
+    );
+
+  if(!activePackages.length){
+
+    box.innerHTML=`
+      <div class="card">
+        <div class="notice">
+          No packages are currently available.
+        </div>
+      </div>
+    `;
+
+    return;
+  }
+
+  box.innerHTML=
+    activePackages
+      .map(pkg=>renderPackageCard(pkg,m))
+      .join("");
+
+}
+
+function renderPackageCard(pkg,m){
+
+  const isActive=
+    m.packageId===pkg.id &&
+    m.packageExpiresAt &&
+    Date.now() <
+      new Date(m.packageExpiresAt).getTime();
+
+  const expired=
+    m.packageId===pkg.id &&
+    m.packageExpiresAt &&
+    Date.now() >=
+      new Date(m.packageExpiresAt).getTime();
+
+  let systemHTML="";
+
+  if(isActive){
+
+    if(!m.adHistory[pkg.id]){
+      m.adHistory[pkg.id]=[];
+    }
+
+    const ads=[];
+
+    for(let i=0;i<pkg.tasks;i++){
+
+      const last=
+        m.adHistory[pkg.id][i] || null;
+
+      const available=
+        isAdAvailable(last);
+
+      let label=
+        "AD "+String(i+1).padStart(2,"0");
+
+      if(
+        runningTaskPackageId===pkg.id &&
+        runningTaskAdIndex===i
+      ){
+
+        label="RUNNING...";
+      }
+      else if(!available){
+
+        label=
+          formatCountdown(
+            getAdAvailableAt(last)-Date.now()
+          );
+
+      }
+
+      ads.push(`
+        <button
+          type="button"
+          class="ad-btn ${available?"available":"locked"}"
+          onclick="startAd('${esc(pkg.id)}',${i})"
+          ${available?"":"disabled"}
+        >
+          ${label}
+        </button>
+      `);
+
+    }
+
+    systemHTML=`
+
+      <div class="package-system active">
+
+        <div class="notice"
+             style="margin-bottom:10px">
+
+          Package Status:
+          <strong style="color:var(--green)">
+            ACTIVE
+          </strong>
+
+          <br>
+
+          Expires:
+          <strong>
+            ${esc(formatDateTime(m.packageExpiresAt))}
+          </strong>
+
+          <br>
+
+          Daily Earning:
+          <strong style="color:var(--gold2)">
+            ${money(pkg.daily)}
+          </strong>
+
+        </div>
+
+        <div class="ad-grid">
+          ${ads.join("")}
+        </div>
+
+        <div class="package-note">
+          Each ad can be completed once every 24 hours.
+          Every ad has its own independent cooldown.
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+  return `
+
+    <div class="package-card">
+
+      <div class="package-head">
+
+        <div class="package-number">
+          ${esc(pkg.id)}
+        </div>
+
+        <div class="package-name">
+          ${esc(pkg.name)}
+        </div>
+
+        <div class="package-price">
+          ${money(pkg.price)}
+        </div>
+
+      </div>
+
+      <div class="package-body">
+
+        <div class="package-info">
+
+          <div>
+            <span>Validity</span>
+            <strong>${pkg.days} Days</strong>
+          </div>
+
+          <div>
+            <span>Tasks</span>
+            <strong>${pkg.tasks} Ads</strong>
+          </div>
+
+          <div>
+            <span>Ad Timer</span>
+            <strong>${pkg.timer} Sec</strong>
+          </div>
+
+          <div>
+            <span>Daily Earning</span>
+            <strong>${money(pkg.daily)}</strong>
+          </div>
+
+        </div>
+
+        ${
+          isActive
+          ? `
+            <button
+              class="btn btn-primary"
+              style="width:100%"
+              type="button"
+              disabled
+            >
+              PACKAGE ACTIVE
+            </button>
+          `
+          :
+          `
+            <button
+              class="btn btn-primary"
+              style="width:100%"
+              type="button"
+              onclick="openPackagePayment('${esc(pkg.id)}')"
+            >
+              ${expired ? "REACTIVATE PACKAGE" : "ACTIVATE PACKAGE"}
+            </button>
+          `
+        }
+
+        ${systemHTML}
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+
+/* ================= AD COOLDOWN ================= */
+
+function getAdAvailableAt(lastCompletedAt){
+
+  return lastCompletedAt
+    ? new Date(lastCompletedAt).getTime()+
+      AD_INTERVAL_MS
+    : Date.now();
+}
+
+function isAdAvailable(lastCompletedAt){
+
+  return !lastCompletedAt ||
+    Date.now()>=
+      getAdAvailableAt(lastCompletedAt);
+}
+
+function formatCountdown(ms){
+
+  const total=
+    Math.max(
+      0,
+      Math.floor(ms/1000)
+    );
+
+  const h=
+    Math.floor(total/3600);
+
+  const m=
+    Math.floor(
+      (total%3600)/60
+    );
+
+  const s=
+    total%60;
+
+  return `${
+    String(h).padStart(2,"0")
+  }:${
+    String(m).padStart(2,"0")
+  }:${
+    String(s).padStart(2,"0")
+  }`;
+}
+
+
+/* ================= START AD ================= */
+
+function startAd(packageId,index){
+
+  const m=getCurrentMember();
+
+  if(!m) return;
+
+  const pkg=
+    state.packages.find(
+      p=>p.id===packageId
+    );
+
+  if(!pkg) return;
+
+  if(m.packageId!==packageId){
+
+    showToast(
+      "This package is not active."
+    );
+
+    return;
+  }
+
+  if(
+    m.packageExpiresAt &&
+    Date.now()>=
+      new Date(m.packageExpiresAt).getTime()
+  ){
+
+    showToast(
+      "This package has expired."
+    );
+
+    renderMemberPackages();
+
+    return;
+  }
+
+  if(!m.adHistory[packageId]){
+    m.adHistory[packageId]=[];
+  }
+
+  const last=
+    m.adHistory[packageId][index];
+
+  if(!isAdAvailable(last)){
+
+    showToast(
+      "This ad is still on cooldown."
+    );
+
+    return;
+  }
+
+  if(runningTaskPackageId!==null){
+
+    showToast(
+      "Please finish the current ad first."
+    );
+
+    return;
+  }
+
+  runningTaskPackageId=packageId;
+  runningTaskAdIndex=index;
+
+  let seconds=
+    Number(pkg.timer)||20;
+
+  showToast(
+    "Ad started. Complete the timer."
+  );
+
+  renderMemberPackages();
+
+  clearInterval(adTimer);
+
+  adTimer=setInterval(()=>{
+
+    seconds--;
+
+    if(seconds<=0){
+
+      clearInterval(adTimer);
+
+      completeAd(
+        packageId,
+        index
+      );
+
+      return;
+    }
+
+  },1000);
+
+}
+
+
+/* ================= COMPLETE AD ================= */
+
+function completeAd(packageId,index){
+
+  const m=getCurrentMember();
+
+  const pkg=
+    state.packages.find(
+      p=>p.id===packageId
+    );
+
+  if(!m||!pkg){
+
+    runningTaskPackageId=null;
+    runningTaskAdIndex=null;
+
+    return;
+  }
+
+  if(!m.adHistory[packageId]){
+    m.adHistory[packageId]=[];
+  }
+
+  m.adHistory[packageId][index]=now();
+
+  const earning=
+    Number(pkg.daily)||0;
+
+  m.balance+=earning;
+
+  m.totalEarning+=earning;
+
+  addNotification(
+    m.id,
+    "Earning Added",
+    money(earning)+
+    " earning added from "+
+    pkg.name+
+    " AD "+
+    String(index+1).padStart(2,"0")+"."
+  );
+
+  runningTaskPackageId=null;
+  runningTaskAdIndex=null;
+
+  saveState();
+
+  renderMember();
+
+  showToast(
+    money(earning)+
+    " earning added successfully."
+  );
+
+}
+
+
+/* ================= PACKAGE PAYMENT ================= */
+
+function openPackagePayment(packageId){
+
+  const m=getCurrentMember();
+
+  if(!m){
+
+    openLogin();
+
+    return;
+  }
+
+  const pkg=
+    state.packages.find(
+      p=>p.id===packageId
+    );
+
+  if(!pkg) return;
+
+  selectedPackageId=packageId;
+
+  document.getElementById(
+    "selectedPackageName"
+  ).textContent=pkg.name;
+
+  document.getElementById(
+    "selectedPackagePrice"
+  ).textContent=money(pkg.price);
+
+  document.getElementById(
+    "packagePaymentMethod"
+  ).value="";
+
+  document.getElementById(
+    "packagePaymentSender"
+  ).value="";
+
+  document.getElementById(
+    "packagePaymentTrx"
+  ).value="";
+
+  document.getElementById(
+    "packagePaymentScreenshot"
+  ).value="";
+
+  document.getElementById(
+    "packagePaymentPreview"
+  ).innerHTML="";
+
+  clearMessage("packagePaymentMessage");
+
+  openModal("packagePaymentModal");
+}
+
+async function submitPackagePayment(event){
+
+  event.preventDefault();
+
+  clearMessage("packagePaymentMessage");
+
+  const m=getCurrentMember();
+
+  const pkg=
+    state.packages.find(
+      p=>p.id===selectedPackageId
+    );
+
+  if(!m||!pkg){
+
+    messageBox(
+      "packagePaymentMessage",
+      "Package or member not found.",
+      "error"
+    );
+
+    return false;
+  }
+
+  const method=
+    document.getElementById(
+      "packagePaymentMethod"
+    ).value;
+
+  const sender=
+    document.getElementById(
+      "packagePaymentSender"
+    ).value.trim();
+
+  const trx=
+    document.getElementById(
+      "packagePaymentTrx"
+    ).value.trim();
+
+  const file=
+    document.getElementById(
+      "packagePaymentScreenshot"
+    ).files[0];
+
+  if(!method||!sender||!trx||!file){
+
+    messageBox(
+      "packagePaymentMessage",
+      "Please complete all payment fields and upload the screenshot.",
+      "error"
+    );
+
+    return false;
+  }
+
+  try{
+
+    const screenshot=
+      await compressImage(file);
+
+    state.packagePayments.push({
+
+      id:Date.now(),
+
+      memberId:m.id,
+
+      type:"PACKAGE",
+
+      amount:pkg.price,
+
+      packageId:pkg.id,
+
+      method,
+
+      sender,
+
+      trx,
+
+      screenshot,
+
+      status:"PENDING",
+
+      createdAt:now(),
+
+      approvedAt:null
+
+    });
+
+    saveState();
+
+    closeModal("packagePaymentModal");
+
+    showToast(
+      "Package payment submitted for Admin approval."
+    );
+
+  }catch(error){
+
+    messageBox(
+      "packagePaymentMessage",
+      error.message ||
+      "Could not process screenshot.",
+      "error"
+    );
+
+  }
+
+  return false;
+}
+
+
+/* ================= WITHDRAWAL ================= */
+
+function openWithdrawal(){
+
+  closeMenu();
+
+  const m=getCurrentMember();
+
+  if(!m){
+
+    openLogin();
+
+    return;
+  }
+
+  const direct=
+    state.members.filter(
+      x=>
+        x.uplineId===m.id &&
+        x.status==="ACTIVE"
+    ).length;
+
+  document.getElementById(
+    "withdrawBalance"
+  ).textContent=money(m.balance);
+
+  document.getElementById(
+    "withdrawAmount"
+  ).value="";
+
+  document.getElementById(
+    "withdrawMethod"
+  ).value="";
+
+  document.getElementById(
+    "withdrawAccount"
+  ).value="";
+
+  clearMessage("withdrawalMessage");
+
+  if(direct<10){
+
+    messageBox(
+      "withdrawalMessage",
+      "Withdrawal requires at least 10 active direct partners. Current Direct Partners: "+direct,
+      "error"
+    );
+
+  }
+
+  openModal("withdrawalModal");
+}
+
+function submitWithdrawal(event){
+
+  event.preventDefault();
+
+  clearMessage("withdrawalMessage");
+
+  const m=getCurrentMember();
+
+  if(!m){
+
+    return false;
+  }
+
+  const direct=
+    state.members.filter(
+      x=>
+        x.uplineId===m.id &&
+        x.status==="ACTIVE"
+    ).length;
+
+  if(direct<10){
+
+    messageBox(
+      "withdrawalMessage",
+      "You need at least 10 active direct partners.",
+      "error"
+    );
+
+    return false;
+  }
+
+  const amount=
+    Number(
+      document.getElementById(
+        "withdrawAmount"
+      ).value
+    );
+
+  const method=
+    document.getElementById(
+      "withdrawMethod"
+    ).value;
+
+  const account=
+    document.getElementById(
+      "withdrawAccount"
+    ).value.trim();
+
+  if(amount<=0){
+
+    messageBox(
+      "withdrawalMessage",
+      "Enter a valid amount.",
+      "error"
+    );
+
+    return false;
+  }
+
+  if(amount>m.balance){
+
+    messageBox(
+      "withdrawalMessage",
+      "Withdrawal amount cannot exceed your available balance.",
+      "error"
+    );
+
+    return false;
+  }
+
+  if(!method||!account){
+
+    messageBox(
+      "withdrawalMessage",
+      "Please complete all withdrawal fields.",
+      "error"
+    );
+
+    return false;
+  }
+
+  state.withdrawals.push({
+
+    id:Date.now(),
+
+    memberId:m.id,
+
+    amount,
+
+    method,
+
+    account,
+
+    status:"PENDING",
+
+    createdAt:now(),
+
+    processedAt:null
+
+  });
+
+  addNotification(
+    m.id,
+    "Withdrawal Submitted",
+    "Your withdrawal request of "+
+    money(amount)+
+    " has been submitted."
+  );
+
+  saveState();
+
+  closeModal("withdrawalModal");
+
+  showToast(
+    "Withdrawal request submitted."
+  );
+
+  return false;
+}
+
+
+/* ================= NOTIFICATIONS ================= */
+
+function openNotifications(){
+
+  closeMenu();
+
+  const m=getCurrentMember();
+
+  if(!m){
+
+    openLogin();
+
+    return;
+  }
+
+  const list=
+    document.getElementById(
+      "notificationList"
+    );
+
+  const items=
+    state.notifications.filter(
+      n=>n.memberId===m.id
+    );
+
+  if(!items.length){
+
+    list.innerHTML=`
+      <div class="notice">
+        No notifications yet.
+      </div>
+    `;
+
+  }else{
+
+    list.innerHTML=
+      items.map(n=>`
+
+        <div class="card"
+             style="margin-bottom:9px">
+
+          <div style="
+            color:var(--gold2);
+            font-weight:bold;
+            margin-bottom:5px;
+          ">
+            ${esc(n.type)}
+          </div>
+
+          <div style="
+            color:#c5cad0;
+            font-size:13px;
+            line-height:1.5;
+          ">
+            ${esc(n.message)}
+          </div>
+
+          <div style="
+            color:#777;
+            font-size:11px;
+            margin-top:7px;
+          ">
+            ${esc(formatDateTime(n.createdAt))}
+          </div>
+
+        </div>
+
+      `).join("");
+
+    items.forEach(n=>n.read=true);
+
+    saveState();
+  }
+
+  openModal("notificationsModal");
+}
+
+
+/* ================= SALARY ================= */
+
+function renderSalary(){
+
+  const m=getCurrentMember();
+
+  if(!m) return;
+
+  const direct=
+    state.members.filter(
+      x=>
+        x.uplineId===m.id &&
+        x.status==="ACTIVE"
+    ).length;
+
+  const team=
+    getTeam(m.id).length;
+
+  const month=
+    new Date()
+      .toISOString()
+      .slice(0,7);
+
+  document.getElementById(
+    "salaryMonth"
+  ).textContent=month;
+
+  document.getElementById(
+    "salaryDirect"
+  ).textContent=direct;
+
+  document.getElementById(
+    "salaryTeam"
+  ).textContent=team;
+
+  if(!state.salary.enabled){
+
+    document.getElementById(
+      "salaryStatus"
+    ).textContent=
+      "SALARY SYSTEM OFF";
+
+    document.getElementById(
+      "salaryAmount"
+    ).textContent="৳0";
+
+    document.getElementById(
+      "salaryHistory"
+    ).innerHTML="";
+
+    return;
+  }
+
+  let qualified=null;
+
+  state.salary.levels
+    .filter(x=>x.active!==false)
+    .forEach(level=>{
+
+      if(
+        direct>=Number(level.directRequired||0) &&
+        team>=Number(level.teamRequired||0)
+      ){
+
+        if(
+          !qualified ||
+          Number(level.amount) >
+          Number(qualified.amount)
+        ){
+
+          qualified=level;
+        }
+
+      }
+
+    });
+
+  document.getElementById(
+    "salaryStatus"
+  ).textContent=
+    qualified
+      ? "QUALIFIED"
+      : "NOT QUALIFIED";
+
+  document.getElementById(
+    "salaryAmount"
+  ).textContent=
+    qualified
+      ? money(qualified.amount)
+      : "৳0";
+
+  const records=
+    state.salary.records.filter(
+      r=>r.memberId===m.id
+    );
+
+  document.getElementById(
+    "salaryHistory"
+  ).innerHTML=
+    records.length
+      ? records.map(r=>`
+          <div class="notice"
+               style="margin-top:8px">
+
+            ${esc(r.month)}
+            —
+            ${money(r.amount)}
+            —
+            <strong>${esc(r.status)}</strong>
+
+          </div>
+        `).join("")
+      : "";
+}
+
+
+/* ================= SETTINGS ================= */
+
+function openSettings(){
+
+  const m=getCurrentMember();
+
+  if(!m){
+
+    showToast(
+      "Login first to access Settings."
+    );
+
+    return;
+  }
+
+  document.getElementById(
+    "profilePictureInput"
+  ).value="";
+
+  document.getElementById(
+    "profilePicturePreview"
+  ).innerHTML=
+    m.profileImage
+      ? `<img src="${m.profileImage}" alt="Current Profile">`
+      : "";
+
+  clearMessage("settingsMessage");
+
+  openModal("settingsModal");
+}
+
+async function saveSettings(){
+
+  const m=getCurrentMember();
+
+  if(!m) return;
+
+  const file=
+    document.getElementById(
+      "profilePictureInput"
+    ).files[0];
+
+  try{
+
+    if(file){
+
+      m.profileImage=
+        await compressImage(
+          file,
+          700,
+          .75
+        );
+
+    }
+
+    saveState();
+
+    renderMember();
+
+    closeModal("settingsModal");
+
+    showToast(
+      "Settings saved successfully."
+    );
+
+  }catch(error){
+
+    messageBox(
+      "settingsMessage",
+      error.message ||
+      "Could not save profile picture.",
+      "error"
+    );
+
+  }
+}
+
+
+/* ================= IMAGE ================= */
+
+function compressImage(
+  file,
+  maxSize=900,
+  quality=.75
+){
+
+  return new Promise(
+    (resolve,reject)=>{
+
+      if(!file){
+
+        resolve("");
+
+        return;
+      }
+
+      if(!file.type.startsWith("image/")){
+
+        reject(
+          new Error(
+            "Please select an image file."
+          )
+        );
+
+        return;
+      }
+
+      const reader=
+        new FileReader();
+
+      reader.onload=()=>{
+
+        const img=new Image();
+
+        img.onload=()=>{
+
+          const scale=
+            Math.min(
+              1,
+              maxSize/
+              Math.max(
+                img.width,
+                img.height
+              )
+            );
+
+          const canvas=
+            document.createElement(
+              "canvas"
+            );
+
+          canvas.width=
+            Math.max(
+              1,
+              Math.round(
+                img.width*scale
+              )
+            );
+
+          canvas.height=
+            Math.max(
+              1,
+              Math.round(
+                img.height*scale
+              )
+            );
+
+          const ctx=
+            canvas.getContext("2d");
+
+          ctx.drawImage(
+            img,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          );
+
+          resolve(
+            canvas.toDataURL(
+              "image/jpeg",
+              quality
+            )
+          );
+
+        };
+
+        img.onerror=()=>{
+          reject(
+            new Error(
+              "Could not read image."
+            )
+          );
+        };
+
+        img.src=reader.result;
+
+      };
+
+      reader.onerror=reject;
+
+      reader.readAsDataURL(file);
+
+    }
+  );
+}
+
+function previewImage(
+  input,
+  previewId
+){
+
+  const file=input.files?.[0];
+
+  const box=
+    document.getElementById(
+      previewId
+    );
+
+  if(!file){
+
+    box.innerHTML="";
+
+    return;
+  }
+
+  const url=
+    URL.createObjectURL(file);
+
+  box.innerHTML=
+    `<img src="${url}" alt="Image Preview">`;
+}
+
+function viewImage(data){
+
+  if(!data){
+
+    alert(
+      "No screenshot available."
+    );
+
+    return;
+  }
+
+  const box=
+    document.getElementById(
+      "imageViewer"
+    );
+
+  box.innerHTML="";
+
+  const img=
+    document.createElement(
+      "img"
+    );
+
+  img.src=data;
+
+  img.style.maxWidth="100%";
+  img.style.maxHeight="75vh";
+  img.style.borderRadius="12px";
+
+  box.appendChild(img);
+
+  openModal(
+    "imageViewerModal"
+  );
+}
+
+
+/* ================= COPY REFERRAL ================= */
+
+function copyReferral(){
+
+  const m=getCurrentMember();
+
+  if(!m) return;
+
+  const link=referralLink(m);
+
+  navigator.clipboard
+    .writeText(link)
+    .then(()=>{
+      showToast(
+        "Referral link copied."
+      );
+    })
+    .catch(()=>{
+      showToast(
+        link
+      );
+    });
+}
+
+
+/* ================= GLOBAL TIMER REFRESH ================= */
+
+setInterval(()=>{
+
+  if(
+    document
+      .getElementById("dashboardPage")
+      .classList.contains("active")
+  ){
+
+    renderMemberPackages();
+
+  }
+
+},1000);
+
+
+/* ================= INITIALIZATION ================= */
+
+function init(){
+
+  state=normalizeState(state);
+
+  saveState();
+
+  const ref=
+    new URLSearchParams(
+      location.search
+    ).get("ref");
+
+  if(ref){
+
+    const referralInput=
+      document.getElementById(
+        "regReferral"
+      );
+
+    if(referralInput){
+
+      referralInput.value=ref;
+      referralInput.readOnly=true;
+
+    }
+
+  }
+
+  const m=getCurrentMember();
+
+  if(m && m.status==="ACTIVE"){
+
+    renderMember();
+
+    showPage("dashboardPage");
+
+  }else{
+
+    currentMemberId=null;
+
+    localStorage.removeItem(
+      "innova_current_member_v1"
+    );
+
+    showPage("welcomePage");
+
+  }
+
+}
+
+init();
+
+</script>
+
+</body>
+</html>
